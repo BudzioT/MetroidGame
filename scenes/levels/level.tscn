@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c54h1oyuf3k3v"]
 
-[ext_resource type="TileSet" uid="uid://c5bxi716eivuk" path="res://scenes/levels/level.tres" id="1_7j47j"]
+[ext_resource type="TileSet" uid="uid://c1s3xfgccd2py" path="res://scenes/levels/level.tres" id="1_7j47j"]
 
 [node name="Level" type="Node2D"]
 
@@ -25,3 +25,5 @@ format = 2
 [node name="Foreground" type="TileMap" parent="Foreground"]
 tile_set = ExtResource("1_7j47j")
 format = 2
+
+[node name="Entities" type="Node2D" parent="."]
