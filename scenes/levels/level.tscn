@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://c54h1oyuf3k3v"]
+
+[ext_resource type="TileSet" uid="uid://c5bxi716eivuk" path="res://scenes/levels/level.tres" id="1_7j47j"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background" type="TileMap" parent="Background"]
+tile_set = ExtResource("1_7j47j")
+format = 2
+
+[node name="BackgroundDecorations" type="TileMap" parent="Background"]
+tile_set = ExtResource("1_7j47j")
+format = 2
+
+[node name="Main" type="Node2D" parent="."]
+
+[node name="Main" type="TileMap" parent="Main"]
+tile_set = ExtResource("1_7j47j")
+format = 2
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="Foreground" type="TileMap" parent="Foreground"]
+tile_set = ExtResource("1_7j47j")
+format = 2
