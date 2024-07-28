@@ -42,7 +42,7 @@ var fast_fall: bool = false
 # Distance of the crosshair from player
 @export var crosshair_distance: int = 20
 # Vertical offset of the crosshair
-@export var crosshair_offset_y: int = 6
+@export var offset_y: int = 6
 # Direction of aiming
 var aim_direction: Vector2 = Vector2.RIGHT
 
@@ -201,4 +201,6 @@ func _animate():
 	$Crosshair.update(aim_direction, crosshair_distance, crouch)
 	
 	# Update player's legs animation
-	$PlayerGraphics.update_legs(direction, is_on_floor, crouch)
+	$PlayerGraphics.update_legs(direction, is_on_floor(), crouch)
+	# Update his torso's position and frame
+	$PlayerGraphics.update_torso(aim_direction, crouch, 0)

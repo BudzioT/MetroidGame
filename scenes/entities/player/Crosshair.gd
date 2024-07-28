@@ -2,7 +2,7 @@ extends Sprite2D
 
 
 """---------------------------- GLOBAL VARIABLES ----------------------------"""
-@onready var offset_y = get_parent().crosshair_offset_y
+@onready var offset_y = get_parent().offset_y
 
 
 """---------------------------- USER-DEFINED FUNCTIONS ----------------------------"""
