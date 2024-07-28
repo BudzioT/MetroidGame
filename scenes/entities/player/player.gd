@@ -37,6 +37,15 @@ var jump: bool = false
 # Fast falling flag
 var fast_fall: bool = false
 
+# Shooting related variables
+@export_group("Shoot")
+# Distance of the crosshair from player
+@export var crosshair_distance: int = 20
+# Vertical offset of the crosshair
+@export var crosshair_offset_y: int = 6
+# Direction of aiming
+var aim_direction: Vector2 = Vector2.RIGHT
+
 # Gamepad is used flag
 var gamepad: bool = true
 
@@ -52,9 +61,21 @@ func _process(delta):
 		_handle_input()
 		_move(delta)
 		
+		# Animate him
+		_animate()
+		
 func _ready():
 	"""Prepare the player"""
 	$Timers/DashCooldown.wait_time = dash_cooldown
+	
+func _input(event):
+	"""Watch for input and handle it"""
+	# Turn off the gamepad flag if player uses mouse
+	if event is InputEventMouseMotion:
+		gamepad = false
+	# Turn on the gamepad if player uses it
+	if Input.get_vector("AimLeft", "AimRight", "AimUp", "AimDown"):
+		gamepad = true
 	
 
 """---------------------------- USER DEFINED FUNCTIONS ----------------------------"""
@@ -85,7 +106,15 @@ func _handle_input():
 		
 	# Get the aim axis from gamepad and mouse
 	var aim_gamepad = Input.get_vector("AimLeft", "AimRight", "AimUp", "AimDown")
-	var aim_mouse = get_local_mouse_position()
+	var aim_mouse = get_local_mouse_position().normalized()
+	
+	# Choose the right axis depending on if the player uses a controller
+	var aim = aim_mouse if not gamepad else aim_gamepad
+	
+	# If aim is far enough, change it
+	if aim.length() > 0.5:
+		# Get the direction from currently used aim, round it to get the direction
+		aim_direction = Vector2(round(aim.x), round(aim.y))
 	
 func _move(delta):
 	"""Move the player"""
@@ -165,3 +194,8 @@ func _finish_dash():
 	velocity.x = move_toward(velocity.x, 0, dash_friction)
 	# Make gravity affect the player again
 	gravity_multiplier = 1
+	
+func _animate():
+	"""Animate the player"""
+	# Update the crosshair
+	$Crosshair.update(aim_direction, crosshair_distance, crouch)

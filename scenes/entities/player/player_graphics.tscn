@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://co5hsxxigx6kx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g3xow"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Crouch",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Idle",
+"speed": 15.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}]
+
+[node name="PlayerGraphics" type="Node2D"]
+
+[node name="Legs" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g3xow")
+animation = &"Jump"
+autoplay = "Idle"
