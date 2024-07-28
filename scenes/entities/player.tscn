@@ -7,7 +7,6 @@
 [node name="Player" instance=ExtResource("1_v5s6i")]
 collision_mask = 14
 script = ExtResource("2_b26hu")
-speed = null
 
 [node name="CollisionPolygon2D" parent="." index="0"]
 scale = Vector2(0.3, 0.3)
@@ -21,10 +20,12 @@ texture = ExtResource("2_dqor0")
 offset = Vector2(0, -20)
 zoom = Vector2(3, 3)
 
-[node name="JumpTimer" type="Timer" parent="Timers" index="0"]
+[node name="JumpBuffer" type="Timer" parent="Timers" index="0"]
 wait_time = 0.3
+one_shot = true
 
 [node name="DashCooldown" type="Timer" parent="Timers" index="1"]
 
-[node name="Shoot" type="Timer" parent="Timers" index="2"]
-wait_time = 0.2
+[node name="Coyote" type="Timer" parent="Timers" index="2"]
+wait_time = 0.14
+one_shot = true
