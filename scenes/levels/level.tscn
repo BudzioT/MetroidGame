@@ -14,6 +14,8 @@ format = 2
 tile_set = ExtResource("1_7j47j")
 format = 2
 
+[node name="Lights" type="Node2D" parent="Background"]
+
 [node name="Main" type="Node2D" parent="."]
 
 [node name="Main" type="TileMap" parent="Main"]
@@ -28,4 +30,8 @@ format = 2
 tile_set = ExtResource("1_7j47j")
 format = 2
 
+[node name="Lights" type="Node2D" parent="Foreground"]
+
 [node name="Entities" type="Node2D" parent="."]
+
+[node name="GlobalLight" type="DirectionalLight2D" parent="."]
