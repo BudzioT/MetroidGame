@@ -43,6 +43,10 @@ var fast_fall: bool = false
 @export var crosshair_distance: int = 20
 # Vertical offset of the crosshair
 @export var offset_y: int = 6
+
+# Current player's gun
+var gun = Global.weapons.AK
+
 # Direction of aiming
 var aim_direction: Vector2 = Vector2.RIGHT
 
@@ -115,6 +119,13 @@ func _handle_input():
 	if aim.length() > 0.5:
 		# Get the direction from currently used aim, round it to get the direction
 		aim_direction = Vector2(round(aim.x), round(aim.y))
+		
+	# Handle player switching weapons
+	if Input.is_action_just_pressed("Switch"):
+		# Get the next gun index, loop it if needed
+		var gun_index = (gun + 1) % len(Global.weapons)
+		# Set the current gun
+		gun = Global.weapons[Global.weapons.keys()[gun_index]]
 	
 func _move(delta):
 	"""Move the player"""
@@ -203,4 +214,4 @@ func _animate():
 	# Update player's legs animation
 	$PlayerGraphics.update_legs(direction, is_on_floor(), crouch)
 	# Update his torso's position and frame
-	$PlayerGraphics.update_torso(aim_direction, crouch, 0)
+	$PlayerGraphics.update_torso(aim_direction, crouch, gun)
