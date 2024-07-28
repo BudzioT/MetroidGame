@@ -564,10 +564,10 @@ animation = &"Rocket_Right"
 animation = &"Rocket_Left"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5swo0"]
-animation = &"SG_Down_Left"
+animation = &"Rocket_Down_Left"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r4j84"]
-animation = &"SG_Down_Right"
+animation = &"Rocket_Down_Right"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_alwh6"]
 animation = &"Rocket_Up_Right"

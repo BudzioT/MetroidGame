@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=3 uid="uid://8ky3e2htfhyd"]
+
+[ext_resource type="Script" path="res://scenes/objects/light.gd" id="1_vkgb4"]
+[ext_resource type="Texture2D" uid="uid://bvlqserp8eqbk" path="res://graphics/objects/lights/lights.png" id="2_ewmnq"]
+[ext_resource type="Texture2D" uid="uid://bpy0u814fusbt" path="res://graphics/objects/lights/l0.png" id="3_fykqq"]
+[ext_resource type="Texture2D" uid="uid://dt66md3wpffqd" path="res://graphics/objects/lights/l2.png" id="4_5rd18"]
+[ext_resource type="Texture2D" uid="uid://ctb625q0wolsl" path="res://graphics/objects/lights/l3.png" id="5_ixg5t"]
+
+[node name="Light" type="Node2D"]
+script = ExtResource("1_vkgb4")
+
+[node name="Options" type="Node2D" parent="."]
+
+[node name="0" type="Node2D" parent="Options"]
+
+[node name="Image" type="Sprite2D" parent="Options/0"]
+texture = ExtResource("2_ewmnq")
+hframes = 6
+
+[node name="Light" type="PointLight2D" parent="Options/0"]
+position = Vector2(0, 45)
+texture = ExtResource("3_fykqq")
+
+[node name="1" type="Node2D" parent="Options"]
+visible = false
+
+[node name="Image" type="Sprite2D" parent="Options/1"]
+texture = ExtResource("2_ewmnq")
+hframes = 6
+frame = 1
+
+[node name="Light" type="PointLight2D" parent="Options/1"]
+position = Vector2(0, 27)
+scale = Vector2(0.275, 0.89)
+texture = ExtResource("3_fykqq")
+
+[node name="2" type="Node2D" parent="Options"]
+visible = false
+
+[node name="Image" type="Sprite2D" parent="Options/2"]
+texture = ExtResource("2_ewmnq")
+hframes = 6
+frame = 2
+
+[node name="Light" type="PointLight2D" parent="Options/2"]
+position = Vector2(-1, 1)
+scale = Vector2(1.45639, -1.44951)
+texture = ExtResource("4_5rd18")
+
+[node name="3" type="Node2D" parent="Options"]
+visible = false
+
+[node name="Image" type="Sprite2D" parent="Options/3"]
+texture = ExtResource("2_ewmnq")
+hframes = 6
+frame = 3
+
+[node name="Light" type="PointLight2D" parent="Options/3"]
+position = Vector2(-5.96046e-08, 5.96046e-08)
+scale = Vector2(1.45639, -1.44951)
+texture = ExtResource("5_ixg5t")
+
+[node name="4" type="Node2D" parent="Options"]
+visible = false
+
+[node name="Image" type="Sprite2D" parent="Options/4"]
+texture = ExtResource("2_ewmnq")
+hframes = 6
+frame = 4
+
+[node name="Light" type="PointLight2D" parent="Options/4"]
+position = Vector2(-1, 3)
+scale = Vector2(1.45639, -1.44951)
+texture = ExtResource("5_ixg5t")
+
+[node name="5" type="Node2D" parent="Options"]
+visible = false
+
+[node name="Image" type="Sprite2D" parent="Options/5"]
+texture = ExtResource("2_ewmnq")
+hframes = 6
+frame = 5
+
+[node name="Light" type="PointLight2D" parent="Options/5"]
+position = Vector2(-1, 3)
+scale = Vector2(1.45639, -1.44951)
+texture = ExtResource("5_ixg5t")
