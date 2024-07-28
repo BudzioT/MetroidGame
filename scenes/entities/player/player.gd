@@ -199,3 +199,6 @@ func _animate():
 	"""Animate the player"""
 	# Update the crosshair
 	$Crosshair.update(aim_direction, crosshair_distance, crouch)
+	
+	# Update player's legs animation
+	$PlayerGraphics.update_legs(direction, is_on_floor, crouch)

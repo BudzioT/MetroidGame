@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cfgeeass6n2qf" path="res://scenes/entities/entity.tscn" id="1_v5s6i"]
 [ext_resource type="Script" path="res://scenes/entities/player/player.gd" id="2_b26hu"]
-[ext_resource type="Texture2D" uid="uid://d0hh71sk4yojf" path="res://icon.svg" id="2_dqor0"]
+[ext_resource type="PackedScene" uid="uid://co5hsxxigx6kx" path="res://scenes/entities/player/player_graphics.tscn" id="3_h5sev"]
 [ext_resource type="Texture2D" uid="uid://w6xqwvw0ep2n" path="res://graphics/guns/crosshair.png" id="4_ac0es"]
 [ext_resource type="Script" path="res://scenes/entities/player/Crosshair.gd" id="5_2ahks"]
 
@@ -13,11 +13,10 @@ crosshair_distance = 30
 
 [node name="CollisionPolygon2D" parent="." index="0"]
 scale = Vector2(0.3, 0.3)
-polygon = PackedVector2Array(-64, -48, -64, -52, -63, -54, -62, -57, -59, -60, -56, -63, -51, -64, -47, -64, 50, -64, 53, -64, 55, -63, 58, -61, 60, -59, 62, -56, 64, -52, 64, -48, 64, 52, 63, 55, 61, 58, 56, 62, 51, 64, 45, 64, -52, 64, -56, 62, -61, 58, -64, 52, -64, 47)
+polygon = PackedVector2Array(11.7708, 54.7917, 25, 54.8958, 25, 51.3542, 21.7708, 51.6667, 21.9792, 48.3333, 18.2292, 48.5417, 18.4375, 28.3333, 15.3125, 28.2292, 15, 15.1042, 11.5625, 14.5833, 11.875, 0.833333, 14.8958, -11.9792, 14.7917, -21.7708, 12.0833, -22.0833, 11.7708, -25.3125, 8.64583, -25.3125, 8.4375, -28.6458, 5.20833, -28.6458, 5.10417, -44.8958, -5.20833, -44.8958, -5.20833, -41.9792, -8.33333, -41.7708, -8.4375, -38.75, -18.6458, -38.3333, -18.6458, -35.1042, -8.54167, -34.8958, -8.54167, -28.4375, -11.7708, -28.3333, -11.5625, -25.3125, -18.4375, -25.1042, -18.3333, -21.6667, -21.7708, -21.6667, -21.875, -5.20833, -25.1042, -5, -25.1042, 4.89583, -15.2083, 4.89583, -15.1042, 11.7708, -18.4375, 11.7708, -18.5417, 28.2292, -21.7708, 28.0208, -21.875, 48.125, -25.1042, 48.2292, -25.2083, 55, -15.3125, 54.8958)
 
-[node name="Image" type="Sprite2D" parent="." index="1"]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_dqor0")
+[node name="PlayerGraphics" parent="." index="1" instance=ExtResource("3_h5sev")]
+position = Vector2(-1, -6)
 
 [node name="Camera2D" type="Camera2D" parent="." index="2"]
 offset = Vector2(0, -20)
