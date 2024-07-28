@@ -7,27 +7,38 @@ extends CharacterBody2D
 @export var speed: int = 200
 var direction: Vector2 = Vector2.ZERO
 
-var acceleration: int = 400
-var friction: int = 550
+@export var acceleration: int = 400
+@export var friction: int = 550
 
 # Movement ability flag
 var moveable: bool = true
+# Crouch flag
+var crouch: bool = false
+
+# Dash variables
+@export_group("Dash")
+# Its cooldown
+@export_range(0.1, 2) var dash_cooldown: float = 0.5
+@export var dash_distance: int = 600
+@export var dash_friction: int = 600
 
 # Dash flag
 var dash: bool = false
-# Its cooldown
-@export_range(0.1, 2) var dash_cooldown: float = 0.5
 
 # Jump variables
 @export_group("Jump")
 @export var jump_power: int = 310
 @export var gravity: int = 600
+var gravity_multiplier: int = 1
 @export var terminal_velocity: int = 450
 
 # Jump flag
 var jump: bool = false
 # Fast falling flag
 var fast_fall: bool = false
+
+# Gamepad is used flag
+var gamepad: bool = true
 
 
 """---------------------------- BUILT-IN FUNCTIONS ----------------------------"""
@@ -40,6 +51,11 @@ func _process(delta):
 	if moveable:
 		_handle_input()
 		_move(delta)
+		
+func _ready():
+	"""Prepare the player"""
+	$Timers/DashCooldown.wait_time = dash_cooldown
+	
 
 """---------------------------- USER DEFINED FUNCTIONS ----------------------------"""
 func _handle_input():
@@ -49,21 +65,27 @@ func _handle_input():
 	
 	# Handle jumps when it's pressed
 	if Input.is_action_just_pressed("Jump"):
-		# Set the jump flag if player is on the floor or he does a coyote jump
-		if is_on_floor() or $Timers/Coyote.time_left:
-			jump = true
-			
-		# If player is falling and isn't on the floor already, start the jump buffer timer
-		if velocity.y > 0 and not is_on_floor():
-			$Timers/JumpBuffer.start()
+		_jump()
 		
 	# Handle stopping jump, by setting the fast fall flag to true
 	if Input.is_action_just_released("Jump") and not is_on_floor() and velocity.y < 0:
 		fast_fall = true
 		
-	# Handle dashing if player's moving
-	if Input.is_action_just_pressed("Dash") and velocity.x:
-		pass
+	# Handle dashing if player's moving and cooldown isn't active
+	if Input.is_action_just_pressed("Dash") and velocity.x and not $Timers/DashCooldown.time_left:
+		dash = true
+		$Timers/DashCooldown.start()
+		
+	# Crouch if player pressed the right button and is on the floor
+	if Input.is_action_pressed("Crouch") and is_on_floor():
+		crouch = true
+	# Otherwise reset the crouch flag
+	else:
+		crouch = false
+		
+	# Get the aim axis from gamepad and mouse
+	var aim_gamepad = Input.get_vector("AimLeft", "AimRight", "AimUp", "AimDown")
+	var aim_mouse = get_local_mouse_position()
 	
 func _move(delta):
 	"""Move the player"""
@@ -73,6 +95,10 @@ func _move(delta):
 	# Otherwise, gradually lower the speed up to 0
 	else:
 		velocity.x = move_toward(velocity.x, 0, friction * delta)
+		
+	# If player is crouching, don't allow him to move horizontally
+	if crouch:
+		velocity.x = 0
 		
 	# If player wants to jump or jump buffer is activated while on floor
 	if jump or $Timers/JumpBuffer.time_left and is_on_floor():
@@ -84,20 +110,47 @@ func _move(delta):
 		fast_fall = false
 		
 	# Store if the player is on the floor
-	var floor = is_on_floor()
+	var on_floor = is_on_floor()
 	
 	# Move him
 	move_and_slide()
 	
 	# If player was on the floor before moving and isn't now, plus he's falling
-	if floor and not is_on_floor() and velocity.y >= 0:
+	if on_floor and not is_on_floor() and velocity.y >= 0:
 		# Start the coyote
 		$Timers/Coyote.start()
+		
+	# If player wants to dash, do it
+	if dash:
+		# Disable dash
+		dash = false
+		
+		# Stop gravity from affecting the player
+		gravity_multiplier = 0
+		
+		# Create a tween to manage dash
+		var tween = create_tween()
+		# Set the player's velocity a really high one over 0.3 seconds
+		tween.tween_property(self, "velocity:x", 
+			velocity.x + direction.x * dash_distance, 0.3)
+		
+		# Call dash finish function, when the dash ends
+		tween.connect("finished", _finish_dash)
+		
+func _jump():
+	"""Make the player jump"""
+	# Set the jump flag if player is on the floor or he does a coyote jump
+	if is_on_floor() or $Timers/Coyote.time_left:
+		jump = true
+			
+	# If player is falling and isn't on the floor already, start the jump buffer timer
+	if velocity.y > 0 and not is_on_floor():
+		$Timers/JumpBuffer.start()
 	
 func _apply_gravity(delta):
 	"""Apply gravity to the player"""
 	# Change the velocity based off gravity
-	velocity.y += gravity * delta;
+	velocity.y += gravity * delta * gravity_multiplier
 	
 	# If player stopped the jump mid-through, make his jump smaller
 	if fast_fall and velocity.y < 0:
@@ -105,3 +158,10 @@ func _apply_gravity(delta):
 	
 	# Make it not exceed the terminal velocity
 	velocity.y = min(velocity.y, terminal_velocity)
+	
+func _finish_dash():
+	"""Finish dash action"""
+	# Stop the dash
+	velocity.x = move_toward(velocity.x, 0, dash_friction)
+	# Make gravity affect the player again
+	gravity_multiplier = 1
