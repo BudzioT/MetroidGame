@@ -7,5 +7,6 @@ enum weapons { AK, SG, ROCKET }
 
 # Enemy statistics
 const enemy_stats = {
-	"Drone": { "speed": 120 }
+	"Drone": { "speed": 120 },
+	"Soldier": { "speed": 65 }
 }

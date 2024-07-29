@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bh6onsn8ww0fi"]
+[gd_scene load_steps=12 format=3 uid="uid://bh6onsn8ww0fi"]
 
 [ext_resource type="Texture2D" uid="uid://wijryg5cjy67" path="res://graphics/guns/projectiles/bomb.png" id="1_v5x0l"]
+[ext_resource type="Script" path="res://scenes/projectiles/explosion.gd" id="2_oj1ra"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nwkp8"]
 atlas = ExtResource("1_v5x0l")
@@ -61,12 +62,15 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_40i63")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 8.0
 }]
 
 [node name="Explosion" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_rxusb")
-frame = 7
-frame_progress = 0.310401
+autoplay = "default"
+frame_progress = 0.788678
+script = ExtResource("2_oj1ra")
+
+[connection signal="animation_finished" from="." to="." method="_animation_finished"]
