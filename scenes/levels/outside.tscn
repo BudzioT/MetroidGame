@@ -114,3 +114,8 @@ color = Color(0.37918, 0.37918, 0.37918, 1)
 
 [node name="Gate" parent="Gates" index="0" instance=ExtResource("3_2w86f")]
 position = Vector2(-1296, 328)
+
+[node name="Gate2" parent="Gates" index="1" instance=ExtResource("3_2w86f")]
+position = Vector2(1522, 226)
+scale = Vector2(6.76, 1.64)
+level = "underground"

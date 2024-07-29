@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ehxg18fvc0mo"]
+[gd_scene load_steps=11 format=3 uid="uid://ehxg18fvc0mo"]
 
 [ext_resource type="PackedScene" uid="uid://c54h1oyuf3k3v" path="res://scenes/levels/level.tscn" id="1_fr2jv"]
 [ext_resource type="PackedScene" uid="uid://83xx4uwvpa7o" path="res://scenes/entities/player/player.tscn" id="2_bm7no"]
 [ext_resource type="PackedScene" uid="uid://npm12n30vo6v" path="res://scenes/objects/saw.tscn" id="2_oxrja"]
 [ext_resource type="PackedScene" uid="uid://8ky3e2htfhyd" path="res://scenes/objects/light.tscn" id="3_4o21j"]
 [ext_resource type="PackedScene" uid="uid://cfbvgalc8k0tg" path="res://scenes/objects/gate.tscn" id="3_5sqdg"]
+[ext_resource type="PackedScene" uid="uid://bcl6e8nqoc83i" path="res://scenes/entities/enemies/drone.tscn" id="5_2hqkv"]
 
 [sub_resource type="Curve2D" id="Curve2D_gvdm7"]
 _data = {
@@ -202,6 +203,11 @@ layer_0/tile_data = PackedInt32Array(3080221, 655360, 11, 3145757, 655360, 12, 3
 
 [node name="Player" parent="Entities" index="0" instance=ExtResource("2_bm7no")]
 position = Vector2(-173, -98)
+
+[node name="Drones" type="Node2D" parent="Entities" index="1"]
+
+[node name="Drone" parent="Entities/Drones" index="0" instance=ExtResource("5_2hqkv")]
+position = Vector2(-95, -104)
 
 [node name="GlobalLight" parent="." index="4"]
 color = Color(0.352563, 0.379714, 0.39124, 1)

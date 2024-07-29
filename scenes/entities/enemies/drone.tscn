@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://bcl6e8nqoc83i"]
+
+[ext_resource type="PackedScene" uid="uid://cfgeeass6n2qf" path="res://scenes/entities/entity.tscn" id="1_ywytq"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/drone.gd" id="2_1wpko"]
+[ext_resource type="Texture2D" uid="uid://f64psvex1eih" path="res://graphics/entities/drone.png" id="2_mpruk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dv5sx"]
+atlas = ExtResource("2_mpruk")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6h4h"]
+atlas = ExtResource("2_mpruk")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrgil"]
+atlas = ExtResource("2_mpruk")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plnh8"]
+atlas = ExtResource("2_mpruk")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aycbr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dv5sx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6h4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrgil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plnh8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ir5dj"]
+radius = 101.005
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bxusw"]
+radius = 11.0
+
+[node name="Drone" instance=ExtResource("1_ywytq")]
+script = ExtResource("2_1wpko")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+polygon = PackedVector2Array(-4, 5, -4, 6, -3, 6, -3, 7, 2, 7, 2, 6, 3, 6, 3, 5, 4, 5, 4, 4, 5, 4, 5, -1, 10, -1, 10, -2, 11, -2, 11, -6, 10, -6, 10, -7, 4, -7, 4, -6, 3, -6, 3, -3, 2, -3, 2, -4, -2, -4, -2, -6, -3, -6, -3, -7, -9, -7, -9, -6, -10, -6, -10, -2, -9, -2, -9, -1, -6, -1, -6, 4, -5, 4, -5, 5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_aycbr")
+frame = 1
+frame_progress = 0.453377
+
+[node name="PlayerArea" type="Area2D" parent="." index="3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea" index="0"]
+shape = SubResource("CircleShape2D_ir5dj")
+
+[node name="CollisionArea" type="Area2D" parent="." index="4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea" index="0"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_bxusw")
