@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ehxg18fvc0mo"]
+[gd_scene load_steps=10 format=3 uid="uid://ehxg18fvc0mo"]
 
 [ext_resource type="PackedScene" uid="uid://c54h1oyuf3k3v" path="res://scenes/levels/level.tscn" id="1_fr2jv"]
 [ext_resource type="PackedScene" uid="uid://83xx4uwvpa7o" path="res://scenes/entities/player/player.tscn" id="2_bm7no"]
 [ext_resource type="PackedScene" uid="uid://npm12n30vo6v" path="res://scenes/objects/saw.tscn" id="2_oxrja"]
+[ext_resource type="PackedScene" uid="uid://8ky3e2htfhyd" path="res://scenes/objects/light.tscn" id="3_4o21j"]
 [ext_resource type="PackedScene" uid="uid://cfbvgalc8k0tg" path="res://scenes/objects/gate.tscn" id="3_5sqdg"]
 
 [sub_resource type="Curve2D" id="Curve2D_gvdm7"]
@@ -12,6 +13,22 @@ _data = {
 point_count = 44
 
 [sub_resource type="Curve2D" id="Curve2D_c7shd"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1418, -345, 0, 0, 0, 0, 1512, -341, 0, 0, 0, 0, 1533, -340, 0, 0, 0, 0, 1535, -370, 0, 0, 0, 0, 1534, -384, 0, 0, 0, 0, 1594, -383, 0, 0, 0, 0, 1629, -384, 0, 0, 0, 0, 1654, -387, 0, 0, 0, 0, 1666, -398, 0, 0, 0, 0, 1667, -423, 0, 0, 0, 0, 1657, -434, 0, 0, 0, 0, 1633, -433, 0, 0, 0, 0, 1558, -435, 0, 0, 0, 0, 1535, -436, 0, 0, 0, 0, 1530, -411, 0, 0, 0, 0, 1516, -383, 0, 0, 0, 0, 1480, -384, 0, 0, 0, 0, 1436, -384, 0, 0, 0, 0, 1417, -385, 0, 0, 0, 0, 1410, -385, 0, 0, 0, 0, 1399, -383, 0, 0, 0, 0, 1397, -355, 0, 0, 0, 0, 1397, -345, 0, 0, 0, 0, 1417, -344, 0, 0, 0, 0, 1418, -345)
+}
+point_count = 25
+
+[sub_resource type="Curve2D" id="Curve2D_lsnvo"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 88, 143, 0, 0, 0, 0, 150, 143, 0, 0, 0, 0, 194, 144, 0, 0, 0, 0, 195, 187, 0, 0, 0, 0, 195, 235, 0, 0, 0, 0, 196, 247, 0, 0, 0, 0, 251, 244, 0, 0, 0, 0, 277, 243, 0, 0, 0, 0, 290, 239, 0, 0, 0, 0, 289, 195, 0, 0, 0, 0, 282, 187, 0, 0, 0, 0, 221, 190, 0, 0, 0, 0, 213, 116, 0, 0, 0, 0, 216, 75, 0, 0, 0, 0, 266, 73, 0, 0, 0, 0, 314, 78, 0, 0, 0, 0, 335, 70, 0, 0, 0, 0, 357, 64, 0, 0, 0, 0, 351, 30, 0, 0, 0, 0, 291, 30, 0, 0, 0, 0, 240, 30, 0, 0, 0, 0, 213, 33, 0, 0, 0, 0, 213, 56, 0, 0, 0, 0, 194, 103, 0, 0, 0, 0, 156, 97, 0, 0, 0, 0, 127, 99, 0, 0, 0, 0, 99, 102, 0, 0, 0, 0, 87, 103, 0, 0, 0, 0, 87, 141, 0, 0, 0, 0, 88, 143)
+}
+point_count = 30
+
+[sub_resource type="Curve2D" id="Curve2D_fa232"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 635, -387, 0, 0, 0, 0, 482, -386, 0, 0, 0, 0, 484, -463, 0, 0, 0, 0, 594, -465, 0, 0, 0, 0, 634, -462, 0, 0, 0, 0, 641, -488, 0, 0, 0, 0, 742, -485, 0, 0, 0, 0, 880, -485, 0, 0, 0, 0, 1044, -482, 0, 0, 0, 0, 1256, -480, 0, 0, 0, 0, 1331, -483, 0, 0, 0, 0, 1384, -486, 0, 0, 0, 0, 1371, -352, 0, 0, 0, 0, 1347, -351, 0, 0, 0, 0, 1343, -381, 0, 0, 0, 0, 1287, -391, 0, 0, 0, 0, 1162, -385, 0, 0, 0, 0, 1001, -385, 0, 0, 0, 0, 793, -386, 0, 0, 0, 0, 635, -388, 0, 0, 0, 0, 635, -387)
+}
+point_count = 21
 
 [node name="StationInside" instance=ExtResource("1_fr2jv")]
 
@@ -35,6 +52,150 @@ curve = SubResource("Curve2D_gvdm7")
 
 [node name="Path2D" type="Path2D" parent="Main/Objects/Saws/Saw2" index="2"]
 curve = SubResource("Curve2D_c7shd")
+
+[node name="Saw3" parent="Main/Objects/Saws" index="2" instance=ExtResource("2_oxrja")]
+
+[node name="Path2D" type="Path2D" parent="Main/Objects/Saws/Saw3" index="2"]
+curve = SubResource("Curve2D_lsnvo")
+
+[node name="Saw4" parent="Main/Objects/Saws" index="3" instance=ExtResource("2_oxrja")]
+
+[node name="Path2D" type="Path2D" parent="Main/Objects/Saws/Saw4" index="2"]
+curve = SubResource("Curve2D_fa232")
+
+[node name="Lights" type="Node2D" parent="Main/Objects" index="1"]
+
+[node name="Light" parent="Main/Objects/Lights" index="0" instance=ExtResource("3_4o21j")]
+position = Vector2(64, 37)
+energy = 3.5
+color = Color(1, 1, 0.584314, 1)
+radius = 1.97
+
+[node name="Light2" parent="Main/Objects/Lights" index="1" instance=ExtResource("3_4o21j")]
+position = Vector2(-192, 4)
+energy = 3.5
+color = Color(1, 1, 0.584314, 1)
+radius = 1.97
+
+[node name="Light3" parent="Main/Objects/Lights" index="2" instance=ExtResource("3_4o21j")]
+position = Vector2(-849, 36)
+energy = 3.5
+color = Color(1, 1, 0.584314, 1)
+radius = 1.97
+
+[node name="Light4" parent="Main/Objects/Lights" index="3" instance=ExtResource("3_4o21j")]
+position = Vector2(-208, 244)
+energy = 3.5
+color = Color(1, 1, 0.584314, 1)
+radius = 1.97
+
+[node name="Light5" parent="Main/Objects/Lights" index="4" instance=ExtResource("3_4o21j")]
+position = Vector2(-672, 262)
+energy = 3.5
+color = Color(1, 1, 0.584314, 1)
+radius = 1.97
+
+[node name="Light6" parent="Main/Objects/Lights" index="5" instance=ExtResource("3_4o21j")]
+position = Vector2(-1280, 261)
+energy = 3.5
+color = Color(1, 1, 0.584314, 1)
+radius = 1.97
+
+[node name="Light7" parent="Main/Objects/Lights" index="6" instance=ExtResource("3_4o21j")]
+position = Vector2(-721, 676)
+energy = 3.5
+color = Color(1, 1, 0.584314, 1)
+radius = 1.97
+
+[node name="Light8" parent="Main/Objects/Lights" index="7" instance=ExtResource("3_4o21j")]
+position = Vector2(624, 661)
+energy = 3.5
+color = Color(1, 1, 0.584314, 1)
+radius = 1.97
+
+[node name="Light9" parent="Main/Objects/Lights" index="8" instance=ExtResource("3_4o21j")]
+position = Vector2(560, -204)
+energy = 3.5
+color = Color(1, 1, 0.584314, 1)
+radius = 1.97
+
+[node name="Light10" parent="Main/Objects/Lights" index="9" instance=ExtResource("3_4o21j")]
+position = Vector2(751, -203)
+energy = 3.5
+color = Color(1, 1, 0.584314, 1)
+radius = 1.97
+
+[node name="Light11" parent="Main/Objects/Lights" index="10" instance=ExtResource("3_4o21j")]
+position = Vector2(1087, -204)
+energy = 3.5
+color = Color(1, 1, 0.584314, 1)
+radius = 1.97
+
+[node name="Light12" parent="Main/Objects/Lights" index="11" instance=ExtResource("3_4o21j")]
+position = Vector2(976, -492)
+energy = 3.5
+color = Color(1, 1, 0.584314, 1)
+radius = 1.97
+
+[node name="Light13" parent="Main/Objects/Lights" index="12" instance=ExtResource("3_4o21j")]
+position = Vector2(1824, -492)
+energy = 3.5
+color = Color(1, 1, 0.584314, 1)
+radius = 1.97
+
+[node name="Light14" parent="Main/Objects/Lights" index="13" instance=ExtResource("3_4o21j")]
+position = Vector2(-160, -236)
+energy = 3.5
+color = Color(1, 1, 0.584314, 1)
+radius = 1.97
+
+[node name="ArrowLight" parent="Main/Objects/Lights" index="14" instance=ExtResource("3_4o21j")]
+position = Vector2(-432, 744)
+type = "3"
+energy = 0.875
+color = Color(0, 1, 0.0784314, 1)
+flicker = 60.0
+radius = 0.5
+
+[node name="ArrowLight2" parent="Main/Objects/Lights" index="15" instance=ExtResource("3_4o21j")]
+position = Vector2(880, -136)
+type = "3"
+energy = 0.875
+color = Color(0, 1, 0.0784314, 1)
+flicker = 60.0
+radius = 0.5
+
+[node name="ArrowLight3" parent="Main/Objects/Lights" index="16" instance=ExtResource("3_4o21j")]
+position = Vector2(1055, -136)
+type = "3"
+energy = 0.875
+color = Color(0, 1, 0.0784314, 1)
+flicker = 60.0
+radius = 0.5
+
+[node name="A2Sign" parent="Main/Objects/Lights" index="17" instance=ExtResource("3_4o21j")]
+position = Vector2(-720, 36)
+type = "5"
+energy = 0.625
+color = Color(0, 1, 0.133333, 1)
+flicker = 65.0
+radius = 0.5
+
+[node name="A2Sign2" parent="Main/Objects/Lights" index="18" instance=ExtResource("3_4o21j")]
+position = Vector2(1760, -476)
+type = "5"
+energy = 0.625
+color = Color(0, 1, 0.133333, 1)
+flicker = 65.0
+radius = 0.5
+
+[node name="A1Sign" parent="Main/Objects/Lights" index="19" instance=ExtResource("3_4o21j")]
+position = Vector2(704, -491)
+type = "4"
+energy = 0.625
+color = Color(0, 1, 0.133333, 1)
+flicker = 65.0
+radius = 0.5
 
 [node name="Foreground" parent="Foreground" index="0"]
 layer_0/tile_data = PackedInt32Array(3080221, 655360, 11, 3145757, 655360, 12, 3211293, 655360, 13, 3080222, 720896, 11, 3145758, 720896, 12, 3211294, 720896, 13, 1376307, 655360, 11, 1441843, 655360, 12, 1507379, 655360, 13, 1376308, 720896, 11, 1441844, 720896, 12, 1507380, 720896, 13, 1441858, 458752, 11, 1507394, 458752, 12, 1441859, 524288, 11, 1507395, 524288, 12, 524368, 458752, 11, 589904, 458752, 12, 524369, 524288, 11, 589905, 524288, 12, 524391, 458752, 11, 589927, 458752, 12, 524392, 524288, 11, 589928, 524288, 12, 524337, 0, 5, 589873, 0, 6, 524338, 65536, 5, 589874, 65536, 6, 524339, 131072, 5, 589875, 131072, 6, 524340, 196608, 5, 589876, 196608, 6, 524341, 262144, 5, 589877, 262144, 6, -458711, 0, 5, -393175, 0, 6, -458710, 65536, 5, -393174, 65536, 6, -458709, 131072, 5, -393173, 131072, 6, -458708, 196608, 5, -393172, 196608, 6, -458707, 262144, 5, -393171, 262144, 6, -720798, 0, 5, -655262, 0, 6, -720797, 65536, 5, -655261, 65536, 6, -720796, 131072, 5, -655260, 131072, 6, -720795, 196608, 5, -655259, 196608, 6, -720794, 262144, 5, -655258, 262144, 6, 1507308, 0, 5, 1572844, 0, 6, 1507309, 65536, 5, 1572845, 65536, 6, 1507310, 131072, 5, 1572846, 131072, 6, 1507311, 196608, 5, 1572847, 196608, 6, 1507312, 262144, 5, 1572848, 262144, 6, 589764, 0, 5, 655300, 0, 6, 589765, 65536, 5, 655301, 65536, 6, 589766, 131072, 5, 655302, 131072, 6, 589767, 196608, 5, 655303, 196608, 6, 589768, 262144, 5, 655304, 262144, 6, 3211196, 0, 5, 3276732, 0, 6, 3211197, 65536, 5, 3276733, 65536, 6, 3211198, 131072, 5, 3276734, 131072, 6, 3211199, 196608, 5, 3276735, 196608, 6, 3211200, 262144, 5, 3276736, 262144, 6, 3211231, 458752, 11, 3276767, 458752, 12, 3211232, 524288, 11, 3276768, 524288, 12, 458818, 655360, 11, 524354, 655360, 12, 589890, 655360, 13, 458819, 720896, 11, 524355, 720896, 12, 589891, 720896, 13)

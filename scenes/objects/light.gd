@@ -54,7 +54,7 @@ var noise_value: float = 0.0
 		if value:
 			radius = value
 			# Set radius of the general light
-			$GeneralLight.radius = radius
+			$GeneralLight.texture_scale = radius
 			
 # Currently active light
 var current_light: PointLight2D
