@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://npm12n30vo6v"]
+
+[ext_resource type="Texture2D" uid="uid://dyrnuigghv3s0" path="res://graphics/objects/saw animation.png" id="1_cqv38"]
+[ext_resource type="Script" path="res://scenes/objects/saw.gd" id="1_xb0kg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6pq2"]
+atlas = ExtResource("1_cqv38")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1c4v"]
+atlas = ExtResource("1_cqv38")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ii10i"]
+atlas = ExtResource("1_cqv38")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6r7c6"]
+atlas = ExtResource("1_cqv38")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7eyks"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6pq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1c4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ii10i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6r7c6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jvfc8"]
+radius = 8.87852
+
+[node name="Saw" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_xb0kg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7eyks")
+autoplay = "default"
+frame = 1
+frame_progress = 0.329383
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jvfc8")
+
+[connection signal="body_entered" from="." to="." method="_body_entered"]
