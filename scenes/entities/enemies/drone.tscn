@@ -58,12 +58,19 @@ frame = 1
 frame_progress = 0.453377
 
 [node name="PlayerArea" type="Area2D" parent="." index="3"]
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea" index="0"]
 shape = SubResource("CircleShape2D_ir5dj")
 
 [node name="CollisionArea" type="Area2D" parent="." index="4"]
+collision_layer = 4
+collision_mask = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea" index="0"]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_bxusw")
+
+[connection signal="body_entered" from="PlayerArea" to="." method="_player_area_entered"]
+[connection signal="body_exited" from="PlayerArea" to="." method="_player_area_exited"]
+[connection signal="body_entered" from="CollisionArea" to="." method="_collision_area_entered"]
