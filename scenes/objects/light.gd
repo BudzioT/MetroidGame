@@ -74,7 +74,7 @@ func _process(delta):
 	"""Process the light's changes"""
 	# Update the noise value
 	noise_value += flicker * delta
-	print(noise.get_noise_1d(noise_value))
+	
 	# If there is currently active light, set its energy to the noise with given value
 	if current_light:
 		current_light.energy = (noise.get_noise_1d(noise_value) + 1 / 4.0) + 0.5

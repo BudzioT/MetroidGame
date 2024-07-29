@@ -206,6 +206,13 @@ func _finish_dash():
 	# Make gravity affect the player again
 	gravity_multiplier = 1
 	
+func stop_movement():
+	"""Stop player's movement"""
+	moveable = false
+	velocity = Vector2.ZERO
+	# Stop the legs animation
+	$PlayerGraphics/Legs.stop()
+	
 func _animate():
 	"""Animate the player"""
 	# Update the crosshair

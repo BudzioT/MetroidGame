@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://w6xqwvw0ep2n" path="res://graphics/guns/crosshair.png" id="4_ac0es"]
 [ext_resource type="Script" path="res://scenes/entities/player/Crosshair.gd" id="5_2ahks"]
 
-[node name="Player" instance=ExtResource("1_v5s6i")]
+[node name="Player" groups=["Player"] instance=ExtResource("1_v5s6i")]
 collision_mask = 14
 script = ExtResource("2_b26hu")
 crosshair_distance = 30

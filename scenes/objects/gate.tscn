@@ -1,5 +1,16 @@
-[gd_scene format=3 uid="uid://cfbvgalc8k0tg"]
+[gd_scene load_steps=3 format=3 uid="uid://cfbvgalc8k0tg"]
 
-[node name="Gate" type="Node2D"]
+[ext_resource type="Script" path="res://scenes/objects/gate.gd" id="1_wys8n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1r0lk"]
+size = Vector2(28.5, 49.5)
+
+[node name="Gate" type="Area2D"]
+collision_layer = 16
+script = ExtResource("1_wys8n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.75)
+shape = SubResource("RectangleShape2D_1r0lk")
+
+[connection signal="body_entered" from="." to="." method="_body_entered"]

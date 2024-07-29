@@ -31,7 +31,6 @@ func update_torso(direction: Vector2, crouch: bool, gun):
 	"""Update player's torso based off of his action, direction and his current gun"""
 	# Update player's torso depending on the gun
 	$AnimationTree.gun = gun
-	print(gun)
 	
 	# Change position of player's torso, depending on if he's crouching
 	$Torso.position.y = 0 if not crouch else offset_y

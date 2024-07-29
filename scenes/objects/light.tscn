@@ -9,7 +9,6 @@
 
 [node name="Light" type="Node2D"]
 script = ExtResource("1_vkgb4")
-color = Color(0.446903, 0.470927, 0.267518, 1)
 
 [node name="GeneralLight" type="PointLight2D" parent="."]
 texture = ExtResource("2_ply0h")
@@ -33,7 +32,7 @@ hframes = 6
 [node name="Light" type="PointLight2D" parent="Options/0"]
 position = Vector2(0, 45)
 color = Color(0.446903, 0.470927, 0.267518, 1)
-energy = 0.710979
+energy = 0.727614
 texture = ExtResource("3_fykqq")
 
 [node name="1" type="Node2D" parent="Options"]
