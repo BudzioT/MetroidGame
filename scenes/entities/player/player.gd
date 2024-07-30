@@ -40,7 +40,7 @@ var fast_fall: bool = false
 # Shooting related variables
 @export_group("Shoot")
 # Distance of the crosshair from player
-@export var crosshair_distance: int = 20
+@export var crosshair_distance: int = 15
 # Vertical offset of the crosshair
 @export var offset_y: int = 6
 
@@ -49,9 +49,14 @@ var gun = Global.weapons.AK
 # Direction of aiming
 var aim_direction: Vector2 = Vector2.RIGHT
 
+# Reload timers
 @export_range(0.1, 2.0) var ak_reload: float = 0.5
 @export_range(0.2, 3.0) var sg_reload: float = 1.2
 @export_range(0.5, 4.0) var rocket_reload: float = 1.8
+
+# Jump after shooting flag
+var gun_jump: bool = false
+var gun_jump_power: int = 170
 
 # Gamepad is used flag
 var gamepad: bool = true
@@ -138,7 +143,7 @@ func _handle_input():
 		
 	# Handle shooting
 	if Input.is_action_just_pressed("Shoot"):
-		_trigger_shoot()
+		trigger_shoot()
 	
 func _move(delta):
 	"""Move the player"""
@@ -212,13 +217,47 @@ func _apply_gravity(delta):
 	# Make it not exceed the terminal velocity
 	velocity.y = min(velocity.y, terminal_velocity)
 	
-func _trigger_shot():
+func trigger_shoot():
 	"""Make the player shoot"""
 	# Calculate position of the projectile
-	var pos = position + 20 * aim_direction
+	var pos = position + crosshair_distance * aim_direction
 	# If player is crouching, make the position a little lower
 	if crouch:
 		pos += Vector2(0, offset_y)
+		
+	# Is player able to shoot flag
+	var able_shoot = false
+	
+	# If current gun is AK and the AK reload time passed, allow to shoot
+	if gun == Global.weapons.AK and not $Timers/AKReload.time_left:
+		able_shoot = true
+		# Start reloading
+		$Timers/AKReload.start()
+	# Check SG availibility and reload if needed
+	if gun == Global.weapons.SG and not $Timers/SGReload.time_left:
+		able_shoot = true
+		$Timers/SGReload.start()
+		
+		# Set position and direction of the particles
+		$SGParticles.position = $Crosshair.position
+		$SGParticles.process_material.set("direction", aim_direction)
+		# Start emitting them
+		$SGParticles.emitting = true
+		
+	# Rocket availbility and reload
+	if gun == Global.weapons.ROCKET and not $Timers/RocketReload.time_left:
+		able_shoot = true
+		$Timers/RocketReload.start()
+		
+		# Calculate position and direction of rocket particles
+		$RocketParticles.position = $Crosshair.position
+		$RocketParticles.process_material.set("direction", aim_direction)
+		# Emit them
+		$RocketParticles.emitting = true
+	
+	# If player can shoot, do it
+	if able_shoot:
+		shoot.emit(pos, direction, gun)
 	
 func _finish_dash():
 	"""Finish dash action"""

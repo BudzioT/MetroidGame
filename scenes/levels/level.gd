@@ -14,7 +14,7 @@ func _ready():
 		entity.connect("explode", _explosion)
 		
 	# Go through each entity type
-	for entity_type in $Entity.get_children():
+	for entity_type in $Entities.get_children():
 		# Go through each of the entities
 		for entity in entity_type.get_children():
 			# If entity is able to shoot, connect a function to create projectiles

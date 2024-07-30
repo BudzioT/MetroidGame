@@ -108,6 +108,19 @@ layer_0/tile_data = PackedInt32Array(-720852, 655360, 11, -655316, 655360, 12, -
 
 [node name="Player" parent="Entities" index="0" instance=ExtResource("2_rfvy6")]
 position = Vector2(-1232, 335)
+speed = 200
+acceleration = 400
+friction = 550
+dash_cooldown = 0.5
+dash_distance = 600
+dash_friction = 600
+jump_power = 310
+gravity = 600
+terminal_velocity = 450
+offset_y = 6
+ak_reload = 0.5
+sg_reload = 1.2
+rocket_reload = 1.8
 
 [node name="GlobalLight" parent="." index="4"]
 color = Color(0.37918, 0.37918, 0.37918, 1)
