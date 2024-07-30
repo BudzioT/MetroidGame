@@ -12,6 +12,11 @@ var health: int = 100:
 	set(value):
 		health = value
 		
+		# If this is player's health
+		if is_in_group("Player"):
+			# Update the health circle
+			get_tree().get_first_node_in_group("HealthCircle").update(health)
+		
 		# If entity has no more health, make it die
 		if health <= 0:
 			_death()

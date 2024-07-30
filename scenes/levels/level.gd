@@ -14,7 +14,14 @@ func _ready():
 	for entity in $Entities/Drones.get_children():
 		# Connect the explosion function to the right signal
 		entity.connect("explode", _explosion)
-		
+			
+	# Flag indicating a need to load data
+	var load_data = false
+	# Get the scene name and check if the enemy data of this scene exists
+	var scene_name = get_tree().current_scene.name
+	if scene_name in Global.enemy_data:
+		load_data = true
+	
 	# Go through each entity type
 	for entity_type in $Entities.get_children():
 		# Go through each of the entities
@@ -25,6 +32,20 @@ func _ready():
 				
 	# Create a projectile when player shoots
 	$Entities/Player.connect("shoot", _create_projectile)
+	
+func _exit_tree():
+	"""Handle exiting the level"""
+	# Make an array reperesenting current enemy's data
+	var current_enemy_data: Array
+	# Go through each of the entity type
+	for entity_type in $Main/Entities.get_children():
+		# Go through each entity of the specified type
+		for entity in entity_type.get_children():
+			# Store its position, velocity and health
+			current_enemy_data.append([entity.position, entity.velocity, entity.health])
+	
+	# Store enemy's data globally
+	Global.enemy_data[get_tree().current_scene.name] = current_enemy_data
 			
 
 """---------------------------- USER DEFINED FUNCTIONS ----------------------------"""

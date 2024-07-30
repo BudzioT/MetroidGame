@@ -43,6 +43,10 @@ func _collision_area_entered(body):
 		# Send a signal to explode at the given position
 		explode.emit(global_position)
 		
+		# Hit the target if it is damageable
+		if body.has_method("hit"):
+			body.hit(Global.enemy_stats["Drone"]["damage"], body.get_sprites())
+		
 		
 """---------------------------- USER DEFINED FUNCTIONS ----------------------------"""
 func _move():

@@ -22,7 +22,7 @@ void fragment() {
 	float inner_circle = step(distance(center, UV), radius - width);
 	
 	// Cut out of the circle
-	float cutOut = step(progress * TAU, atan(UV.x - center.x, UV.y - center.y) + PI);
+	float cutOut = step((1.0 - progress) * TAU, atan(UV.x - center.x, UV.y - center.y) + PI);
 	
 	// Create the health circle by deleting the inner part
 	COLOR.a = (outer_circle - inner_circle) * alpha * cutOut;
