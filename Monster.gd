@@ -20,7 +20,7 @@ var rng = RandomNumberGenerator.new()
 
 
 """---------------------------- BUILT-IN FUNCTIONS ----------------------------"""
-func _process(delta):
+func _process(_delta):
 	"""Process monster changes over frames"""
 	# Horizontal position off the monster, set to the right side of game's camera
 	var x = player.position.x + camera_size / 2 - 30
@@ -61,7 +61,7 @@ func _attack():
 	
 	# Shoot from every position that is in the chosen layout
 	for marker in layout.get_children():
-		pass
+		shoot.emit(marker.global_position, Vector2.LEFT, Global.weapons.AK)
 	
 func _set_idle():
 	"""Set the state to idle"""

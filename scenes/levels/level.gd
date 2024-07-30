@@ -2,7 +2,9 @@ extends Node2D
 
 
 """---------------------------- GLOBAL VARIABLES ----------------------------"""
+# Scenes
 const explosion_scene = preload("res://scenes/projectiles/explosion.tscn")
+const bullet_scene = preload("res://scenes/projectiles/bullet.tscn")
 
 
 """---------------------------- BUILT-IN FUNCTIONS ----------------------------"""
@@ -20,6 +22,9 @@ func _ready():
 			# If entity is able to shoot, connect a function to create projectiles
 			if entity.has_signal("shoot"):
 				entity.connect("shoot", _create_projectile)
+				
+	# Create a projectile when player shoots
+	$Entities/Player.connect("shoot", _create_projectile)
 			
 
 """---------------------------- USER DEFINED FUNCTIONS ----------------------------"""
@@ -31,6 +36,10 @@ func _explosion(pos):
 	# Set its position
 	explosion.position = pos
 	
-func _create_projectile(position, direction, bullet_type):
+func _create_projectile(pos, dir, bullet_type):
 	"""Create a projectile"""
-	pass
+	var bullet = bullet_scene.instantiate()
+	$Main/Projectiles.add_child(bullet)
+	
+	# Initialize the bullet
+	bullet.initialize(pos, dir, bullet_type)

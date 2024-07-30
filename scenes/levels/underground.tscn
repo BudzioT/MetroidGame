@@ -264,21 +264,6 @@ layer_0/tile_data = PackedInt32Array(4784237, 655360, 11, 4849773, 655360, 12, 4
 
 [node name="Player" parent="Entities" index="0" instance=ExtResource("4_v5pa5")]
 position = Vector2(284, 350)
-speed = 200
-acceleration = 400
-friction = 550
-dash_cooldown = 0.5
-dash_distance = 600
-dash_friction = 600
-jump_power = 310
-gravity = 600
-terminal_velocity = 450
-offset_y = 6
-ak_reload = 0.5
-sg_reload = 1.2
-rocket_reload = 1.8
-sg_jump_power = 140
-rocket_jump_power = 200
 
 [node name="GlobalLight" parent="." index="4"]
 color = Color(0.435192, 0.435192, 0.435192, 1)
