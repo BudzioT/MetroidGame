@@ -54,6 +54,10 @@ var aim_direction: Vector2 = Vector2.RIGHT
 @export_range(0.2, 3.0) var sg_reload: float = 1.2
 @export_range(0.5, 4.0) var rocket_reload: float = 1.8
 
+# Jump powers of certain weapons
+@export_range(1, 400) var sg_jump_power: int = 140
+@export_range(1, 400) var rocket_jump_power: int = 200
+
 # Jump after shooting flag
 var gun_jump: bool = false
 var gun_jump_power: int = 170
@@ -167,6 +171,10 @@ func _move(delta):
 		# Set fast fall to false at the beginning
 		fast_fall = false
 		
+	# If player does a gun jump, make it
+	if gun_jump:
+		_handle_gun_jump()
+		
 	# Store if the player is on the floor
 	var on_floor = is_on_floor()
 	
@@ -204,6 +212,15 @@ func _jump():
 	# If player is falling and isn't on the floor already, start the jump buffer timer
 	if velocity.y > 0 and not is_on_floor():
 		$Timers/JumpBuffer.start()
+		
+func _handle_gun_jump():
+	"""Handle gun jumping"""
+	# Make the player go up
+	velocity.y = -gun_jump_power
+	
+	# Reset the gun jump flag, disable faster falling
+	gun_jump = false
+	fast_fall = false
 	
 func _apply_gravity(delta):
 	"""Apply gravity to the player"""
@@ -234,7 +251,7 @@ func trigger_shoot():
 		# Start reloading
 		$Timers/AKReload.start()
 	# Check SG availibility and reload if needed
-	if gun == Global.weapons.SG and not $Timers/SGReload.time_left:
+	elif gun == Global.weapons.SG and not $Timers/SGReload.time_left:
 		able_shoot = true
 		$Timers/SGReload.start()
 		
@@ -244,8 +261,13 @@ func trigger_shoot():
 		# Start emitting them
 		$SGParticles.emitting = true
 		
+		# If player is shooting at the floor, jump a little
+		if aim_direction.y == 1 and velocity.y >= 0:
+			gun_jump = true
+			gun_jump_power = sg_jump_power
+		
 	# Rocket availbility and reload
-	if gun == Global.weapons.ROCKET and not $Timers/RocketReload.time_left:
+	elif gun == Global.weapons.ROCKET and not $Timers/RocketReload.time_left:
 		able_shoot = true
 		$Timers/RocketReload.start()
 		
@@ -254,6 +276,11 @@ func trigger_shoot():
 		$RocketParticles.process_material.set("direction", aim_direction)
 		# Emit them
 		$RocketParticles.emitting = true
+		
+		# If player is shooting at the floor, jump with decent strength
+		if aim_direction.y == 1 and velocity.y >= 0:
+			gun_jump = true
+			gun_jump_power = rocket_jump_power
 	
 	# If player can shoot, do it
 	if able_shoot:
@@ -272,6 +299,10 @@ func stop_movement():
 	velocity = Vector2.ZERO
 	# Stop the legs animation
 	$PlayerGraphics/Legs.stop()
+	
+func get_camera():
+	"""Get the game's camera"""
+	return $Camera2D
 	
 func _animate():
 	"""Animate the player"""

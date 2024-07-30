@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://juohagkwmlc7"]
+[gd_scene load_steps=13 format=3 uid="uid://juohagkwmlc7"]
 
 [ext_resource type="PackedScene" uid="uid://c54h1oyuf3k3v" path="res://scenes/levels/level.tscn" id="1_ra7c7"]
 [ext_resource type="PackedScene" uid="uid://npm12n30vo6v" path="res://scenes/objects/saw.tscn" id="2_iqenr"]
 [ext_resource type="PackedScene" uid="uid://83xx4uwvpa7o" path="res://scenes/entities/player/player.tscn" id="2_rfvy6"]
 [ext_resource type="PackedScene" uid="uid://cfbvgalc8k0tg" path="res://scenes/objects/gate.tscn" id="3_2w86f"]
+[ext_resource type="PackedScene" uid="uid://b1kvil1n1jlca" path="res://scenes/entities/enemies/monster.tscn" id="4_lm4th"]
 
 [sub_resource type="Curve2D" id="Curve2D_dixxa"]
 _data = {
@@ -108,19 +109,9 @@ layer_0/tile_data = PackedInt32Array(-720852, 655360, 11, -655316, 655360, 12, -
 
 [node name="Player" parent="Entities" index="0" instance=ExtResource("2_rfvy6")]
 position = Vector2(-1232, 335)
-speed = 200
-acceleration = 400
-friction = 550
-dash_cooldown = 0.5
-dash_distance = 600
-dash_friction = 600
-jump_power = 310
-gravity = 600
-terminal_velocity = 450
-offset_y = 6
-ak_reload = 0.5
-sg_reload = 1.2
-rocket_reload = 1.8
+
+[node name="Monster" parent="Entities/Monsters" index="0" instance=ExtResource("4_lm4th")]
+position = Vector2(-862, 290)
 
 [node name="GlobalLight" parent="." index="4"]
 color = Color(0.37918, 0.37918, 0.37918, 1)

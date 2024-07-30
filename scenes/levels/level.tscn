@@ -42,6 +42,8 @@ format = 2
 
 [node name="Soldiers" type="Node2D" parent="Entities"]
 
+[node name="Monsters" type="Node2D" parent="Entities"]
+
 [node name="GlobalLight" type="DirectionalLight2D" parent="."]
 
 [node name="Gates" type="Node2D" parent="."]

@@ -217,6 +217,8 @@ offset_y = 6
 ak_reload = 0.5
 sg_reload = 1.2
 rocket_reload = 1.8
+sg_jump_power = 140
+rocket_jump_power = 200
 
 [node name="Drone" parent="Entities/Drones" index="0" instance=ExtResource("5_2hqkv")]
 position = Vector2(506, -117)
