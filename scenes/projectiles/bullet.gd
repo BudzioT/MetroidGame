@@ -27,7 +27,7 @@ func _body_entered(body):
 	
 	# If it hit an object that is damagable, make it take damage
 	if "hit" in body:
-		body.hit(damage)
+		body.hit(damage, body.get_sprites())
 	
 	# Destroy the bullet
 	queue_free()

@@ -66,3 +66,7 @@ func _attack():
 func _set_idle():
 	"""Set the state to idle"""
 	$AnimationPlayer.current_animation = "Idle"
+	
+func get_sprites():
+	"""Get monster's sprites"""
+	return [$AttackImage]

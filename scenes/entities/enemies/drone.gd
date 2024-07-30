@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Entity
 
 
 """---------------------------- SIGNALS ----------------------------"""
@@ -16,6 +16,10 @@ var active: bool = false
 
 
 """---------------------------- BUILT-IN FUNCTIONS ----------------------------"""
+func _ready():
+	"""Prepare the drone"""
+	health = Global.enemy_stats["Drone"]["health"]
+
 func _process(_delta):
 	"""Apply changes to the drone over time"""
 	# If drone is activated, move towards the player
@@ -49,3 +53,13 @@ func _move():
 	# Calculate the velocity and move the drone
 	velocity = direction * speed
 	move_and_slide()
+	
+func _death():
+	"""Handle drone's getting destroyed"""
+	# Explode and destroy the drone
+	explode.emit(global_position)
+	queue_free()
+	
+func get_sprites():
+	"""Get drone's sprites"""
+	return [$AnimatedSprite2D]

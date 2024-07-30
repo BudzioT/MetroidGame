@@ -313,3 +313,7 @@ func _animate():
 	$PlayerGraphics.update_legs(direction, is_on_floor(), crouch)
 	# Update his torso's position and frame
 	$PlayerGraphics.update_torso(aim_direction, crouch, gun)
+	
+func get_sprites():
+	"""Get the player sprites"""
+	return [$PlayerGraphics/Legs, $PlayerGraphics/Torso]

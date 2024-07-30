@@ -1,8 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://6ma2vq7yt433"]
+[gd_scene load_steps=15 format=3 uid="uid://6ma2vq7yt433"]
 
 [ext_resource type="PackedScene" uid="uid://cfgeeass6n2qf" path="res://scenes/entities/entity.tscn" id="1_36uu4"]
 [ext_resource type="Script" path="res://scenes/entities/enemies/soldier.gd" id="2_b60gl"]
 [ext_resource type="Texture2D" uid="uid://65figpkyq7t1" path="res://graphics/entities/ARMob.png" id="2_tf408"]
+[ext_resource type="Shader" uid="uid://x5osh686xr4l" path="res://shaders/flash.tres" id="3_lft4r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cc1a8"]
+shader = ExtResource("3_lft4r")
+shader_parameter/Color = Color(1, 0, 0.207843, 1)
+shader_parameter/Progress = 0.0
 
 [sub_resource type="Animation" id="Animation_32djw"]
 resource_name = "Death"
@@ -181,6 +187,7 @@ script = ExtResource("2_b60gl")
 polygon = PackedVector2Array(5, 19, -5, 19, -5, 11, -5, -4, -1, -7, 4, -7, 5, -4, 5, -3)
 
 [node name="Image" type="Sprite2D" parent="." index="2"]
+material = SubResource("ShaderMaterial_cc1a8")
 texture = ExtResource("2_tf408")
 hframes = 24
 

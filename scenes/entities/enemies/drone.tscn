@@ -1,8 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://bcl6e8nqoc83i"]
+[gd_scene load_steps=13 format=3 uid="uid://bcl6e8nqoc83i"]
 
 [ext_resource type="PackedScene" uid="uid://cfgeeass6n2qf" path="res://scenes/entities/entity.tscn" id="1_ywytq"]
 [ext_resource type="Script" path="res://scenes/entities/enemies/drone.gd" id="2_1wpko"]
 [ext_resource type="Texture2D" uid="uid://f64psvex1eih" path="res://graphics/entities/drone.png" id="2_mpruk"]
+[ext_resource type="Shader" uid="uid://x5osh686xr4l" path="res://shaders/flash.tres" id="3_mr17b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_axewl"]
+shader = ExtResource("3_mr17b")
+shader_parameter/Color = Color(0.394353, 0.394353, 0.394353, 1)
+shader_parameter/Progress = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dv5sx"]
 atlas = ExtResource("2_mpruk")
@@ -53,6 +59,7 @@ script = ExtResource("2_1wpko")
 polygon = PackedVector2Array(-4, 5, -4, 6, -3, 6, -3, 7, 2, 7, 2, 6, 3, 6, 3, 5, 4, 5, 4, 4, 5, 4, 5, -1, 10, -1, 10, -2, 11, -2, 11, -6, 10, -6, 10, -7, 4, -7, 4, -6, 3, -6, 3, -3, 2, -3, 2, -4, -2, -4, -2, -6, -3, -6, -3, -7, -9, -7, -9, -6, -10, -6, -10, -2, -9, -2, -9, -1, -6, -1, -6, 4, -5, 4, -5, 5)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+material = SubResource("ShaderMaterial_axewl")
 sprite_frames = SubResource("SpriteFrames_aycbr")
 frame = 1
 frame_progress = 0.453377

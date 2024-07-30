@@ -41,5 +41,5 @@ func _body_entered(body):
 	# If entity is hitable, try to hit it
 	if "hit" in body:
 		# Deal 10 damage
-		body.hit(10)
+		body.hit(10, body.get_sprites())
 	

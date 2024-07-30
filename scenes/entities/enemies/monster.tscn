@@ -7,7 +7,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p5e0h"]
 shader = ExtResource("3_xytam")
-shader_parameter/Color = Color(1, 1, 1, 1)
+shader_parameter/Color = Color(0.764928, 0.514802, 0.364216, 1)
+shader_parameter/Progress = 0.0
 
 [sub_resource type="Animation" id="Animation_0oe7k"]
 length = 0.001

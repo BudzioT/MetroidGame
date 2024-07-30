@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://x5osh686xr4l"]
+[gd_resource type="VisualShader" load_steps=6 format=3 uid="uid://x5osh686xr4l"]
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_cjey7"]
 parameter_name = "Color"
@@ -14,11 +14,16 @@ source = 5
 default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(1, 1, 1, 1), 2, Quaternion(0.5, 0.5, 0.5, 0.5)]
 op_type = 5
 
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_b0n8e"]
+parameter_name = "Progress"
+hint = 1
+
 [resource]
 code = "shader_type canvas_item;
 render_mode blend_mix;
 
 uniform vec4 Color : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+uniform float Progress : hint_range(0, 1);
 
 
 
@@ -32,9 +37,12 @@ void fragment() {
 	vec4 n_out2p0 = Color;
 
 
+// FloatParameter:6
+	float n_out6p0 = Progress;
+
+
 // Mix:5
-	vec4 n_in5p2 = vec4(0.50000, 0.50000, 0.50000, 0.50000);
-	vec4 n_out5p0 = mix(n_out4p0, n_out2p0, n_in5p2);
+	vec4 n_out5p0 = mix(n_out4p0, n_out2p0, vec4(n_out6p0));
 
 
 // Output:0
@@ -43,7 +51,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-13.8934, -258.624)
+graph_offset = Vector2(-104.045, -183.902)
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2(580, 100)
@@ -55,4 +63,6 @@ nodes/fragment/4/node = SubResource("VisualShaderNodeTexture_fgyr7")
 nodes/fragment/4/position = Vector2(180, 80)
 nodes/fragment/5/node = SubResource("VisualShaderNodeMix_l1tgc")
 nodes/fragment/5/position = Vector2(380, 160)
-nodes/fragment/connections = PackedInt32Array(3, 0, 4, 2, 4, 0, 5, 0, 2, 0, 5, 1, 5, 0, 0, 0)
+nodes/fragment/6/node = SubResource("VisualShaderNodeFloatParameter_b0n8e")
+nodes/fragment/6/position = Vector2(80, 420)
+nodes/fragment/connections = PackedInt32Array(3, 0, 4, 2, 4, 0, 5, 0, 2, 0, 5, 1, 5, 0, 0, 0, 6, 0, 5, 2)

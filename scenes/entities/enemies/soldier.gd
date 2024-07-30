@@ -15,6 +15,10 @@ var attack: bool = false
 
 
 """---------------------------- BUILT-IN FUNCTIONS ----------------------------"""
+func _ready():
+	"""Initialize the soldier"""
+	health = Global.enemy_stats["Soldier"]["health"]
+
 func _process(_delta):
 	"""Process soldier's changes over the frames"""
 	# Check for edges, turn around if there is one
@@ -69,6 +73,14 @@ func trigger_shoot():
 	
 	# Shoot
 	shoot.emit(position + 20 * direction, direction, Global.weapons.AK)
+	
+func _death():
+	"""Handle soldier's death"""
+	
+	
+func get_sprites():
+	"""Get soldier's sprites"""
+	return [$Image]
 		
 func _animate():
 	"""Animate the soldier"""
