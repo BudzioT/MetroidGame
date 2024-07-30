@@ -33,4 +33,4 @@ func _explosion(pos):
 	
 func _create_projectile(position, direction, bullet_type):
 	"""Create a projectile"""
-	
+	pass

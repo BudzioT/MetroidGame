@@ -112,6 +112,7 @@ position = Vector2(-1232, 335)
 
 [node name="Monster" parent="Entities/Monsters" index="0" instance=ExtResource("4_lm4th")]
 position = Vector2(-862, 290)
+limits = Vector2i(100, 1650)
 
 [node name="GlobalLight" parent="." index="4"]
 color = Color(0.37918, 0.37918, 0.37918, 1)
