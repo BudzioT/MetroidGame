@@ -25,3 +25,10 @@ const weapon_stats = {
 
 # Data of enemies
 var enemy_data: Dictionary = { }
+
+# Sounds of projectiles
+const projectile_sounds = {
+	weapons.AK: preload("res://audio/ak_shoot.wav"),
+	weapons.SG: preload("res://audio/shotgun_shoot.wav"),
+	weapons.ROCKET: preload("res://audio/rocket_shoot.wav")
+}

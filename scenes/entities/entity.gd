@@ -35,6 +35,14 @@ func hit(damage, nodes):
 		
 		# Make entity unhitable again
 		$Timers/Invincibility.start()
+		
+func initialize(data):
+	"""Initialize the entity with the given data"""
+	# If this is an enemy, load the data
+	if self.is_in_group("Enemies"):
+		position = data[0]
+		velocity = data[1]
+		health = data[2]
 	
 func _death():
 	"""Handle dying"""

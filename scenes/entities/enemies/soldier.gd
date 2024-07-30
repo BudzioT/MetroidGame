@@ -76,6 +76,18 @@ func trigger_shoot():
 	# Shoot
 	shoot.emit(position + 20 * direction, direction, Global.weapons.AK)
 	
+func initialize(data):
+	"""Initialize the soldier"""
+	super.initialize(data)
+	
+	# Stop moving and stop the animation
+	speed_multiplier = 0
+	$AnimationPlayer.stop()
+	
+	# If soldier is dead, keep it this way
+	if health <= 0:
+		$Image.frame = 22
+	
 func _death():
 	"""Handle soldier's death"""
 	# Stop moving

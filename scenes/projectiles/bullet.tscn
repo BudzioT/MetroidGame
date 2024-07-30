@@ -26,5 +26,7 @@ energy = 0.8
 texture = ExtResource("3_sd0qx")
 texture_scale = 0.08
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_body_entered"]
 [connection signal="timeout" from="LifeTimer" to="." method="_life_timer_timeout"]

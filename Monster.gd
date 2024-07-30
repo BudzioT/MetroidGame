@@ -84,8 +84,12 @@ func get_sprites():
 	
 func explosion():
 	"""Make the monster explode"""
+	# Ignore warnings about narrowing conversions
+	@warning_ignore("narrowing_conversion")
 	# Get random position
 	var rand_x = rng.randi_range(global_position.x - 20, global_position.x + 20)
+	# Ignore warnings again
+	@warning_ignore("narrowing_conversion")
 	var rand_y = rng.randi_range(global_position.y - 20, global_position.y + 20)
 	
 	# Explode
