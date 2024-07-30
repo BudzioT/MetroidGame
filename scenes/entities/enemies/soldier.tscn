@@ -186,7 +186,7 @@ script = ExtResource("2_b60gl")
 [node name="CollisionPolygon2D" parent="." index="0"]
 polygon = PackedVector2Array(5, 19, -5, 19, -5, 11, -5, -4, -1, -7, 4, -7, 5, -4, 5, -3)
 
-[node name="Image" type="Sprite2D" parent="." index="2"]
+[node name="Image" type="Sprite2D" parent="." index="2" groups=["Enemies"]]
 material = SubResource("ShaderMaterial_cc1a8")
 texture = ExtResource("2_tf408")
 hframes = 24

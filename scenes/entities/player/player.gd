@@ -314,6 +314,10 @@ func _animate():
 	# Update his torso's position and frame
 	$PlayerGraphics.update_torso(aim_direction, crouch, gun)
 	
+func _death():
+	"""Quit the game on dying"""
+	#get_tree().quit()
+	
 func get_sprites():
 	"""Get the player sprites"""
 	return [$PlayerGraphics/Legs, $PlayerGraphics/Torso]

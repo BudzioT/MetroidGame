@@ -17,7 +17,7 @@ const weapon_stats = {
 	weapons.AK: {"damage": 20, "speed": 150, 
 		"texture": preload("res://graphics/guns/projectiles/default.png")},
 		
-	weapons.SG: {"damage": 40, "range": 40},
+	weapons.SG: {"damage": 40, "range": 90},
 	
 	weapons.ROCKET: {"damage": 30, "speed": 100, 
 		"texture": preload("res://graphics/guns/projectiles/large.png")}

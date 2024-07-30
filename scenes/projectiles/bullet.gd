@@ -64,3 +64,17 @@ func initialize(pos, dir, type):
 		$Image.hide()
 		# Hide the light
 		$PointLight2D.hide()
+		
+		# Get all the enemies
+		var enemies = get_tree().get_nodes_in_group("Enemies")
+		# Go through each of the enemy
+		for enemy in enemies:
+			# Calculate the angle of a bullet and the enemy
+			var bullet_angle = rad_to_deg(direction.angle())
+			var enemy_angle = rad_to_deg((enemy.position - pos).angle())
+			
+			# If enemy is in the SG range and angle is right, hit the enemy
+			if pos.distance_to(enemy.position) < Global.weapon_stats[Global.weapons.SG]["range"]\
+				and abs(bullet_angle - enemy_angle):
+					enemy.hit(Global.weapon_stats[Global.weapons.SG]["damage"], 
+						enemy.get_sprites())

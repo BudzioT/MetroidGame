@@ -1,6 +1,10 @@
 extends Entity
 
 
+"""---------------------------- SIGNALS ----------------------------"""
+signal explode(pos)
+
+
 """---------------------------- GLOBAL VARIABLES ----------------------------"""
 # Reference to the player
 @onready var player = get_tree().get_first_node_in_group("Player")
@@ -62,6 +66,13 @@ func _attack():
 	# Shoot from every position that is in the chosen layout
 	for marker in layout.get_children():
 		shoot.emit(marker.global_position, Vector2.LEFT, Global.weapons.AK)
+		
+func _death():
+	"""Handle monster's death"""
+	# Stop the actions
+	$Timers/Attack.stop()
+	$Timers/Move.stop()
+	$AnimationPlayer.current_animation = "Death"
 	
 func _set_idle():
 	"""Set the state to idle"""
@@ -70,3 +81,12 @@ func _set_idle():
 func get_sprites():
 	"""Get monster's sprites"""
 	return [$AttackImage]
+	
+func explosion():
+	"""Make the monster explode"""
+	# Get random position
+	var rand_x = rng.randi_range(global_position.x - 20, global_position.x + 20)
+	var rand_y = rng.randi_range(global_position.y - 20, global_position.y + 20)
+	
+	# Explode
+	explode.emit(Vector2(rand_x, rand_y))

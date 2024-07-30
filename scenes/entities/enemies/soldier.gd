@@ -21,15 +21,17 @@ func _ready():
 
 func _process(_delta):
 	"""Process soldier's changes over the frames"""
-	# Check for edges, turn around if there is one
-	_check_edges()
-	# Also check if soldier should attack
-	_check_attack()
-	
-	# Move the soldier
-	_move()
-	# Animate him
-	_animate()
+	# If soldier is alive, process those changes
+	if health > 0:
+		# Check for edges, turn around if there is one
+		_check_edges()
+		# Also check if soldier should attack
+		_check_attack()
+		
+		# Move the soldier
+		_move()
+		# Animate him
+		_animate()
 
 func _wall_area_entered(_body):
 	"""Change soldier's direction if he touches a wall"""
@@ -76,7 +78,16 @@ func trigger_shoot():
 	
 func _death():
 	"""Handle soldier's death"""
+	# Stop moving
+	speed_multiplier = 0
+	# Play the death animation
+	$AnimationPlayer.current_animation = "Death"
+	# Disable collisions without debugger errors
+	call_deferred("disable_collisions")
 	
+func _disable_collisions():
+	"""Disable the collisions"""
+	$CollisionShape2D.disabled = true
 	
 func get_sprites():
 	"""Get soldier's sprites"""
