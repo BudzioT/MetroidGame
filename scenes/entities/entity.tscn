@@ -8,3 +8,7 @@ script = ExtResource("1_3kwds")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 
 [node name="Timers" type="Node" parent="."]
+
+[node name="Invincibility" type="Timer" parent="Timers"]
+wait_time = 0.3
+one_shot = true

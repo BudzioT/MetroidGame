@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1o4mwgidej3x"]
+[gd_scene load_steps=4 format=3 uid="uid://d1o4mwgidej3x"]
 
 [ext_resource type="Script" path="res://scenes/projectiles/bullet.gd" id="1_dxejc"]
 [ext_resource type="Texture2D" uid="uid://dyy78nsflfnjr" path="res://graphics/guns/projectiles/default.png" id="1_gtidb"]
+[ext_resource type="Texture2D" uid="uid://bj8a2ktj2qb08" path="res://graphics/objects/lights/main.png" id="3_sd0qx"]
 
 [node name="Bullet" type="Area2D"]
 collision_layer = 4
@@ -13,3 +14,17 @@ texture = ExtResource("1_gtidb")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-1.4928, 1.46519, 1.52165, 1.50201, 1.52165, 0.484778, 3.48595, 0.484778, 3.50349, -0.514915, 1.50411, -0.532453, 1.48951, -1.47996, -1.51138, -1.49854, -1.52067, -0.513727, -3.52943, -0.514915, -3.5119, 0.502316, -1.50209, 0.508247)
+
+[node name="LifeTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 1, 0.180392, 1)
+energy = 0.8
+texture = ExtResource("3_sd0qx")
+texture_scale = 0.08
+
+[connection signal="body_entered" from="." to="." method="_body_entered"]
+[connection signal="timeout" from="LifeTimer" to="." method="_life_timer_timeout"]

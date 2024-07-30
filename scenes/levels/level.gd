@@ -43,3 +43,7 @@ func _create_projectile(pos, dir, bullet_type):
 	
 	# Initialize the bullet
 	bullet.initialize(pos, dir, bullet_type)
+	
+	# If bullet is from a rocket, make it explosive
+	if bullet_type == Global.weapons.ROCKET:
+		bullet.connect("explode", _explosion)

@@ -284,8 +284,6 @@ func trigger_shoot():
 	
 	# If player can shoot, do it
 	if able_shoot:
-		print(position)
-		print(pos)
 		shoot.emit(pos, aim_direction, gun)
 	
 func _finish_dash():

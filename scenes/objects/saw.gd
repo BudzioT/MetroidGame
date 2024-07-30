@@ -36,7 +36,10 @@ func _process(delta):
 	path_follow.progress += progress_increment * delta * direction
 	position = path_follow.position
 
-func _body_entered(_body):
-	"""Handle player touching the saw"""
-	print("HIT")
+func _body_entered(body):
+	"""Handle body touching the saw"""
+	# If entity is hitable, try to hit it
+	if "hit" in body:
+		# Deal 10 damage
+		body.hit(10)
 	

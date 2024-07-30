@@ -45,12 +45,10 @@ func _check_edges():
 	if horizontal_direction > 0 and not $FloorRayCasts/Right.get_collider():
 		# Change the direction
 		horizontal_direction = -1
-		print("RIGHT")
 	
 	# Do the same for the left side
 	if horizontal_direction < 0 and not $FloorRayCasts/Left.get_collider():
 		horizontal_direction = 1
-		print("LEFT")
 		
 func _check_attack():
 	"""Check and set the attack state if player is close enough"""
