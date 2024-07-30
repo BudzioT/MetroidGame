@@ -178,7 +178,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhlf7"]
 size = Vector2(15, 27)
 
-[node name="Soldier" instance=ExtResource("1_36uu4")]
+[node name="Soldier" groups=["Enemies"] instance=ExtResource("1_36uu4")]
 collision_layer = 2
 collision_mask = 9
 script = ExtResource("2_b60gl")

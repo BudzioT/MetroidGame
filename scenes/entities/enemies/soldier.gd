@@ -83,11 +83,11 @@ func _death():
 	# Play the death animation
 	$AnimationPlayer.current_animation = "Death"
 	# Disable collisions without debugger errors
-	call_deferred("disable_collisions")
+	call_deferred("_disable_collisions")
 	
 func _disable_collisions():
 	"""Disable the collisions"""
-	$CollisionShape2D.disabled = true
+	$CollisionPolygon2D.disabled = true
 	
 func get_sprites():
 	"""Get soldier's sprites"""
