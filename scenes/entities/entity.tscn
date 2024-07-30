@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://cfgeeass6n2qf"]
+[gd_scene load_steps=2 format=3 uid="uid://cfgeeass6n2qf"]
+
+[ext_resource type="Script" path="res://scenes/entities/entity.gd" id="1_3kwds"]
 
 [node name="Entity" type="CharacterBody2D"]
+script = ExtResource("1_3kwds")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 

@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Entity
 
 
 """---------------------------- GLOBAL VARIABLES ----------------------------"""
@@ -46,9 +46,12 @@ var fast_fall: bool = false
 
 # Current player's gun
 var gun = Global.weapons.AK
-
 # Direction of aiming
 var aim_direction: Vector2 = Vector2.RIGHT
+
+@export_range(0.1, 2.0) var ak_reload: float = 0.5
+@export_range(0.2, 3.0) var sg_reload: float = 1.2
+@export_range(0.5, 4.0) var rocket_reload: float = 1.8
 
 # Gamepad is used flag
 var gamepad: bool = true
@@ -70,7 +73,13 @@ func _process(delta):
 		
 func _ready():
 	"""Prepare the player"""
+	# Apply the dash cooldown
 	$Timers/DashCooldown.wait_time = dash_cooldown
+	
+	# Load weapon cooldowns
+	$Timers/AKReload.wait_time = ak_reload
+	$Timers/SGReload.wait_time = sg_reload
+	$Timers/RocketReload.wait_time = rocket_reload
 	
 func _input(event):
 	"""Watch for input and handle it"""
@@ -126,6 +135,10 @@ func _handle_input():
 		var gun_index = (gun + 1) % len(Global.weapons)
 		# Set the current gun
 		gun = Global.weapons[Global.weapons.keys()[gun_index]]
+		
+	# Handle shooting
+	if Input.is_action_just_pressed("Shoot"):
+		_trigger_shoot()
 	
 func _move(delta):
 	"""Move the player"""
@@ -198,6 +211,14 @@ func _apply_gravity(delta):
 	
 	# Make it not exceed the terminal velocity
 	velocity.y = min(velocity.y, terminal_velocity)
+	
+func _trigger_shot():
+	"""Make the player shoot"""
+	# Calculate position of the projectile
+	var pos = position + 20 * aim_direction
+	# If player is crouching, make the position a little lower
+	if crouch:
+		pos += Vector2(0, offset_y)
 	
 func _finish_dash():
 	"""Finish dash action"""

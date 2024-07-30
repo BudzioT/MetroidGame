@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Entity
 
 
 """---------------------------- GLOBAL VARIABLES ----------------------------"""
@@ -15,7 +15,7 @@ var attack: bool = false
 
 
 """---------------------------- BUILT-IN FUNCTIONS ----------------------------"""
-func _process(delta):
+func _process(_delta):
 	"""Process soldier's changes over the frames"""
 	# Check for edges, turn around if there is one
 	_check_edges()
@@ -27,7 +27,7 @@ func _process(delta):
 	# Animate him
 	_animate()
 
-func _wall_area_entered(body):
+func _wall_area_entered(_body):
 	"""Change soldier's direction if he touches a wall"""
 	horizontal_direction *= -1
 	
@@ -64,6 +64,14 @@ func _check_attack():
 		attack = false
 		speed_multiplier = 1
 		
+func trigger_shoot():
+	"""Make the soldier shoot"""
+	# Calculate the direction
+	var direction = (player.position - position).normalized()
+	
+	# Shoot
+	shoot.emit(position + 20 * direction, direction, Global.weapons.AK)
+		
 func _animate():
 	"""Animate the soldier"""
 	# Flip the image if soldier if looking to the left
@@ -77,6 +85,12 @@ func _animate():
 		
 		# Flip the sprite in the player's direction
 		$Image.flip_h = difference.x < 0
+		# If player is close enough and is above the soldier, shoot up
+		if difference.y < -0.5 and abs(difference.x) < 0.5:
+			direction = "Up"
+		# Do the same for down direction
+		if difference.y > -0.5 and abs(difference.x) < 0.5:
+			direction = "Down"
 		
 		# Set the shoot animation depending on the direction
 		$AnimationPlayer.current_animation = "Shoot_" + direction
