@@ -25,3 +25,6 @@ Play it from the exe file!
 - Shoot: Left Mouse Click
 - Change weapon: Right Mouse Click
 - Dash: K or Shift
+
+## 🏛️ Assets
+- Checkout those amazing assets here: https://bakudas.itch.io/generic-run-n-gun
