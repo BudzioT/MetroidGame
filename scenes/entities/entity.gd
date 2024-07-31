@@ -36,6 +36,9 @@ func hit(damage, nodes):
 		# Make entity unhitable again
 		$Timers/Invincibility.start()
 		
+		# Play the hit sound
+		$HitSound.play()
+		
 func initialize(data):
 	"""Initialize the entity with the given data"""
 	# If this is an enemy, load the data

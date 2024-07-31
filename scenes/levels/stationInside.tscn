@@ -76,85 +76,134 @@ energy = 3.5
 color = Color(1, 1, 0.584314, 1)
 radius = 1.97
 
-[node name="Light2" parent="Main/Objects/Lights" index="1" instance=ExtResource("3_4o21j")]
+[node name="SmallLight" parent="Main/Objects/Lights" index="1" instance=ExtResource("3_4o21j")]
+position = Vector2(500, 278)
+type = "1"
+energy = 3.25
+color = Color(1, 1, 0.584314, 1)
+radius = 0.97
+
+[node name="SmallLight2" parent="Main/Objects/Lights" index="2" instance=ExtResource("3_4o21j")]
+position = Vector2(888, 278)
+type = "1"
+energy = 3.25
+color = Color(1, 1, 0.584314, 1)
+radius = 0.97
+
+[node name="SmallLight3" parent="Main/Objects/Lights" index="3" instance=ExtResource("3_4o21j")]
+position = Vector2(1100, 278)
+type = "1"
+energy = 3.25
+color = Color(1, 1, 0.584314, 1)
+radius = 0.97
+
+[node name="SmallLight4" parent="Main/Objects/Lights" index="4" instance=ExtResource("3_4o21j")]
+position = Vector2(1101, 28)
+type = "1"
+energy = 3.25
+color = Color(1, 1, 0.584314, 1)
+radius = 0.97
+
+[node name="SmallLight5" parent="Main/Objects/Lights" index="5" instance=ExtResource("3_4o21j")]
+position = Vector2(1480, 27)
+type = "1"
+energy = 3.25
+color = Color(1, 1, 0.584314, 1)
+radius = 0.97
+
+[node name="SmallLight6" parent="Main/Objects/Lights" index="6" instance=ExtResource("3_4o21j")]
+position = Vector2(-288, 6)
+type = "1"
+energy = 3.25
+color = Color(1, 1, 0.584314, 1)
+radius = 0.97
+
+[node name="SmallLight7" parent="Main/Objects/Lights" index="7" instance=ExtResource("3_4o21j")]
+position = Vector2(-481, -217)
+type = "1"
+energy = 3.25
+color = Color(1, 1, 0.584314, 1)
+radius = 0.97
+
+[node name="Light2" parent="Main/Objects/Lights" index="8" instance=ExtResource("3_4o21j")]
 position = Vector2(-192, 4)
 energy = 3.5
 color = Color(1, 1, 0.584314, 1)
 radius = 1.97
 
-[node name="Light3" parent="Main/Objects/Lights" index="2" instance=ExtResource("3_4o21j")]
+[node name="Light3" parent="Main/Objects/Lights" index="9" instance=ExtResource("3_4o21j")]
 position = Vector2(-849, 36)
 energy = 3.5
 color = Color(1, 1, 0.584314, 1)
 radius = 1.97
 
-[node name="Light4" parent="Main/Objects/Lights" index="3" instance=ExtResource("3_4o21j")]
+[node name="Light4" parent="Main/Objects/Lights" index="10" instance=ExtResource("3_4o21j")]
 position = Vector2(-208, 244)
 energy = 3.5
 color = Color(1, 1, 0.584314, 1)
 radius = 1.97
 
-[node name="Light5" parent="Main/Objects/Lights" index="4" instance=ExtResource("3_4o21j")]
+[node name="Light5" parent="Main/Objects/Lights" index="11" instance=ExtResource("3_4o21j")]
 position = Vector2(-672, 262)
 energy = 3.5
 color = Color(1, 1, 0.584314, 1)
 radius = 1.97
 
-[node name="Light6" parent="Main/Objects/Lights" index="5" instance=ExtResource("3_4o21j")]
+[node name="Light6" parent="Main/Objects/Lights" index="12" instance=ExtResource("3_4o21j")]
 position = Vector2(-1280, 261)
 energy = 3.5
 color = Color(1, 1, 0.584314, 1)
 radius = 1.97
 
-[node name="Light7" parent="Main/Objects/Lights" index="6" instance=ExtResource("3_4o21j")]
+[node name="Light7" parent="Main/Objects/Lights" index="13" instance=ExtResource("3_4o21j")]
 position = Vector2(-721, 676)
 energy = 3.5
 color = Color(1, 1, 0.584314, 1)
 radius = 1.97
 
-[node name="Light8" parent="Main/Objects/Lights" index="7" instance=ExtResource("3_4o21j")]
+[node name="Light8" parent="Main/Objects/Lights" index="14" instance=ExtResource("3_4o21j")]
 position = Vector2(624, 661)
 energy = 3.5
 color = Color(1, 1, 0.584314, 1)
 radius = 1.97
 
-[node name="Light9" parent="Main/Objects/Lights" index="8" instance=ExtResource("3_4o21j")]
+[node name="Light9" parent="Main/Objects/Lights" index="15" instance=ExtResource("3_4o21j")]
 position = Vector2(560, -204)
 energy = 3.5
 color = Color(1, 1, 0.584314, 1)
 radius = 1.97
 
-[node name="Light10" parent="Main/Objects/Lights" index="9" instance=ExtResource("3_4o21j")]
+[node name="Light10" parent="Main/Objects/Lights" index="16" instance=ExtResource("3_4o21j")]
 position = Vector2(751, -203)
 energy = 3.5
 color = Color(1, 1, 0.584314, 1)
 radius = 1.97
 
-[node name="Light11" parent="Main/Objects/Lights" index="10" instance=ExtResource("3_4o21j")]
+[node name="Light11" parent="Main/Objects/Lights" index="17" instance=ExtResource("3_4o21j")]
 position = Vector2(1087, -204)
 energy = 3.5
 color = Color(1, 1, 0.584314, 1)
 radius = 1.97
 
-[node name="Light12" parent="Main/Objects/Lights" index="11" instance=ExtResource("3_4o21j")]
+[node name="Light12" parent="Main/Objects/Lights" index="18" instance=ExtResource("3_4o21j")]
 position = Vector2(976, -492)
 energy = 3.5
 color = Color(1, 1, 0.584314, 1)
 radius = 1.97
 
-[node name="Light13" parent="Main/Objects/Lights" index="12" instance=ExtResource("3_4o21j")]
+[node name="Light13" parent="Main/Objects/Lights" index="19" instance=ExtResource("3_4o21j")]
 position = Vector2(1824, -492)
 energy = 3.5
 color = Color(1, 1, 0.584314, 1)
 radius = 1.97
 
-[node name="Light14" parent="Main/Objects/Lights" index="13" instance=ExtResource("3_4o21j")]
+[node name="Light14" parent="Main/Objects/Lights" index="20" instance=ExtResource("3_4o21j")]
 position = Vector2(-160, -236)
 energy = 3.5
 color = Color(1, 1, 0.584314, 1)
 radius = 1.97
 
-[node name="ArrowLight" parent="Main/Objects/Lights" index="14" instance=ExtResource("3_4o21j")]
+[node name="ArrowLight" parent="Main/Objects/Lights" index="21" instance=ExtResource("3_4o21j")]
 position = Vector2(-432, 744)
 type = "3"
 energy = 0.875
@@ -162,7 +211,7 @@ color = Color(0, 1, 0.0784314, 1)
 flicker = 60.0
 radius = 0.5
 
-[node name="ArrowLight2" parent="Main/Objects/Lights" index="15" instance=ExtResource("3_4o21j")]
+[node name="ArrowLight2" parent="Main/Objects/Lights" index="22" instance=ExtResource("3_4o21j")]
 position = Vector2(880, -136)
 type = "3"
 energy = 0.875
@@ -170,7 +219,7 @@ color = Color(0, 1, 0.0784314, 1)
 flicker = 60.0
 radius = 0.5
 
-[node name="ArrowLight3" parent="Main/Objects/Lights" index="16" instance=ExtResource("3_4o21j")]
+[node name="ArrowLight3" parent="Main/Objects/Lights" index="23" instance=ExtResource("3_4o21j")]
 position = Vector2(1055, -136)
 type = "3"
 energy = 0.875
@@ -178,7 +227,7 @@ color = Color(0, 1, 0.0784314, 1)
 flicker = 60.0
 radius = 0.5
 
-[node name="A2Sign" parent="Main/Objects/Lights" index="17" instance=ExtResource("3_4o21j")]
+[node name="A2Sign" parent="Main/Objects/Lights" index="24" instance=ExtResource("3_4o21j")]
 position = Vector2(-720, 36)
 type = "5"
 energy = 0.625
@@ -186,7 +235,7 @@ color = Color(0, 1, 0.133333, 1)
 flicker = 65.0
 radius = 0.5
 
-[node name="A2Sign2" parent="Main/Objects/Lights" index="18" instance=ExtResource("3_4o21j")]
+[node name="A2Sign2" parent="Main/Objects/Lights" index="25" instance=ExtResource("3_4o21j")]
 position = Vector2(1760, -476)
 type = "5"
 energy = 0.625
@@ -194,7 +243,7 @@ color = Color(0, 1, 0.133333, 1)
 flicker = 65.0
 radius = 0.5
 
-[node name="A1Sign" parent="Main/Objects/Lights" index="19" instance=ExtResource("3_4o21j")]
+[node name="A1Sign" parent="Main/Objects/Lights" index="26" instance=ExtResource("3_4o21j")]
 position = Vector2(704, -491)
 type = "4"
 energy = 0.625
@@ -208,8 +257,32 @@ layer_0/tile_data = PackedInt32Array(3080221, 655360, 11, 3145757, 655360, 12, 3
 [node name="Drone" parent="Entities/Drones" index="0" instance=ExtResource("5_2hqkv")]
 position = Vector2(506, -117)
 
+[node name="Drone2" parent="Entities/Drones" index="1" instance=ExtResource("5_2hqkv")]
+position = Vector2(491, 112)
+
+[node name="Drone3" parent="Entities/Drones" index="2" instance=ExtResource("5_2hqkv")]
+position = Vector2(897, 337)
+
+[node name="Drone4" parent="Entities/Drones" index="3" instance=ExtResource("5_2hqkv")]
+position = Vector2(1396, -222)
+
+[node name="Drone5" parent="Entities/Drones" index="4" instance=ExtResource("5_2hqkv")]
+position = Vector2(-356, 743)
+
 [node name="Soldier" parent="Entities/Soldiers" index="0" instance=ExtResource("6_dg4c4")]
-position = Vector2(-239, -97)
+position = Vector2(-1015, 369)
+
+[node name="Soldier2" parent="Entities/Soldiers" index="1" instance=ExtResource("6_dg4c4")]
+position = Vector2(-264, 146)
+
+[node name="Soldier3" parent="Entities/Soldiers" index="2" instance=ExtResource("6_dg4c4")]
+position = Vector2(-391, 369)
+
+[node name="Soldier4" parent="Entities/Soldiers" index="3" instance=ExtResource("6_dg4c4")]
+position = Vector2(553, 786)
+
+[node name="Soldier5" parent="Entities/Soldiers" index="4" instance=ExtResource("6_dg4c4")]
+position = Vector2(1157, -383)
 
 [node name="Player" parent="Entities" index="3" instance=ExtResource("2_bm7no")]
 position = Vector2(-173, -98)

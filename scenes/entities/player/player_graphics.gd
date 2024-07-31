@@ -39,3 +39,8 @@ func update_torso(direction: Vector2, crouch: bool, gun):
 	$AnimationTree["parameters/AK/blend_position"] = direction
 	$AnimationTree["parameters/SG/blend_position"] = direction
 	$AnimationTree["parameters/Rocket/blend_position"] = direction
+	
+func dash_particles(direction):
+	"""Spawn dash particles in the given direction"""
+	$DashParticles.process_material.set("direction", direction)
+	$DashParticles.restart()

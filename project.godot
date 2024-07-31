@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://global/global.gd"
 Transition="*res://global/transition.tscn"
+BgMusic="*res://global/bg_music.tscn"
 
 [input]
 

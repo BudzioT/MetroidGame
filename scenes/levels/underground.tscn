@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://0nsht04rxec8"]
+[gd_scene load_steps=14 format=3 uid="uid://0nsht04rxec8"]
 
 [ext_resource type="PackedScene" uid="uid://c54h1oyuf3k3v" path="res://scenes/levels/level.tscn" id="1_ky1cs"]
 [ext_resource type="PackedScene" uid="uid://8ky3e2htfhyd" path="res://scenes/objects/light.tscn" id="2_augej"]
 [ext_resource type="PackedScene" uid="uid://npm12n30vo6v" path="res://scenes/objects/saw.tscn" id="3_1k0au"]
 [ext_resource type="PackedScene" uid="uid://cfbvgalc8k0tg" path="res://scenes/objects/gate.tscn" id="4_n5ehm"]
 [ext_resource type="PackedScene" uid="uid://83xx4uwvpa7o" path="res://scenes/entities/player/player.tscn" id="4_v5pa5"]
+[ext_resource type="PackedScene" uid="uid://bcl6e8nqoc83i" path="res://scenes/entities/enemies/drone.tscn" id="5_mssym"]
+[ext_resource type="PackedScene" uid="uid://6ma2vq7yt433" path="res://scenes/entities/enemies/soldier.tscn" id="6_x61o2"]
 
 [sub_resource type="Curve2D" id="Curve2D_s1a6l"]
 _data = {
@@ -267,6 +269,42 @@ layer_0/tile_data = PackedInt32Array(4784237, 655360, 11, 4849773, 655360, 12, 4
 
 [node name="Player" parent="Entities" index="0" instance=ExtResource("4_v5pa5")]
 position = Vector2(284, 350)
+
+[node name="Drone" parent="Entities/Drones" index="0" instance=ExtResource("5_mssym")]
+position = Vector2(45, -38)
+
+[node name="Drone2" parent="Entities/Drones" index="1" instance=ExtResource("5_mssym")]
+position = Vector2(-202, 330)
+
+[node name="Drone3" parent="Entities/Drones" index="2" instance=ExtResource("5_mssym")]
+position = Vector2(-553, 404)
+
+[node name="Drone4" parent="Entities/Drones" index="3" instance=ExtResource("5_mssym")]
+position = Vector2(25, 1032)
+
+[node name="Drone5" parent="Entities/Drones" index="4" instance=ExtResource("5_mssym")]
+position = Vector2(867, 765)
+
+[node name="Drone6" parent="Entities/Drones" index="5" instance=ExtResource("5_mssym")]
+position = Vector2(1697, 1112)
+
+[node name="Soldier" parent="Entities/Soldiers" index="0" instance=ExtResource("6_x61o2")]
+position = Vector2(4, 431)
+
+[node name="Soldier2" parent="Entities/Soldiers" index="1" instance=ExtResource("6_x61o2")]
+position = Vector2(1337, 1360)
+
+[node name="Soldier4" parent="Entities/Soldiers" index="2" instance=ExtResource("6_x61o2")]
+position = Vector2(1697, 958)
+
+[node name="Soldier5" parent="Entities/Soldiers" index="3" instance=ExtResource("6_x61o2")]
+position = Vector2(1021, 287)
+
+[node name="Soldier6" parent="Entities/Soldiers" index="4" instance=ExtResource("6_x61o2")]
+position = Vector2(71, -1)
+
+[node name="Soldier3" parent="Entities/Soldiers" index="5" instance=ExtResource("6_x61o2")]
+position = Vector2(418, 1343)
 
 [node name="GlobalLight" parent="." index="4"]
 color = Color(0.435192, 0.435192, 0.435192, 1)

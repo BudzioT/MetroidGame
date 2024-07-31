@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://co5hsxxigx6kx"]
+[gd_scene load_steps=80 format=3 uid="uid://co5hsxxigx6kx"]
 
 [ext_resource type="Texture2D" uid="uid://cgio7c5yfwoa2" path="res://graphics/entities/player.png" id="1_rm32q"]
 [ext_resource type="Script" path="res://scenes/entities/player/player_graphics.gd" id="1_v5esr"]
@@ -682,6 +682,18 @@ states/Start/position = Vector2(178.667, 106.667)
 transitions = ["Start", "AK", SubResource("AnimationNodeStateMachineTransition_qhke2"), "AK", "SG", SubResource("AnimationNodeStateMachineTransition_o6l7x"), "SG", "AK", SubResource("AnimationNodeStateMachineTransition_v4y8h"), "SG", "Rocket", SubResource("AnimationNodeStateMachineTransition_7ukhv"), "Rocket", "AK", SubResource("AnimationNodeStateMachineTransition_sa4mo"), "AK", "Rocket", SubResource("AnimationNodeStateMachineTransition_dlp6k"), "Rocket", "SG", SubResource("AnimationNodeStateMachineTransition_krm0o")]
 graph_offset = Vector2(-183, 4)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_aaug3"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 16, 1)
+spread = 15.0
+initial_velocity_min = 100.0
+initial_velocity_max = 160.0
+gravity = Vector3(0, 98, 0)
+scale_min = 2.0
+scale_max = 7.0
+color = Color(0.918091, 0.918091, 0.918091, 1)
+
 [node name="PlayerGraphics" type="Node2D"]
 script = ExtResource("1_v5esr")
 
@@ -711,3 +723,10 @@ parameters/AK/blend_position = Vector2(0, 0.00200796)
 parameters/Rocket/blend_position = Vector2(0, 0)
 parameters/SG/blend_position = Vector2(0, 0)
 script = ExtResource("3_thfrk")
+
+[node name="DashParticles" type="GPUParticles2D" parent="."]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_aaug3")
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.6

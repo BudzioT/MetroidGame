@@ -203,6 +203,14 @@ func _move(delta):
 		# Call dash finish function, when the dash ends
 		tween.connect("finished", _finish_dash)
 		
+		# Create some dash particles
+		$PlayerGraphics.dash_particles(direction)
+		# Flash him a little
+		_flash(get_sprites())
+		
+		# Play dash sound
+		$DashSound.play()
+		
 func _jump():
 	"""Make the player jump"""
 	# Set the jump flag if player is on the floor or he does a coyote jump
@@ -316,7 +324,7 @@ func _animate():
 	
 func _death():
 	"""Quit the game on dying"""
-	#get_tree().quit()
+	get_tree().quit()
 	
 func get_sprites():
 	"""Get the player sprites"""

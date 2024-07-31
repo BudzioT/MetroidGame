@@ -6,7 +6,14 @@ You dash, shoot and kill the enemies, you must also have some platforming skills
 
 
 ## :hammer: Play
-Play it from the exe file, which isn't available right now ; p
+Play it from the exe file!
+
+## :camera: Screenshots
+- 
+<br>
+
+- 
+<br>
 
 ## :video_game: Controls
 - Movement: Right and Left Arrows or A and D

@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bh6onsn8ww0fi"]
+[gd_scene load_steps=13 format=3 uid="uid://bh6onsn8ww0fi"]
 
 [ext_resource type="Texture2D" uid="uid://wijryg5cjy67" path="res://graphics/guns/projectiles/bomb.png" id="1_v5x0l"]
 [ext_resource type="Script" path="res://scenes/projectiles/explosion.gd" id="2_oj1ra"]
+[ext_resource type="AudioStream" uid="uid://0acbeuukgirj" path="res://audio/explosion_medium.wav" id="3_7hyyj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nwkp8"]
 atlas = ExtResource("1_v5x0l")
@@ -72,5 +73,8 @@ sprite_frames = SubResource("SpriteFrames_rxusb")
 autoplay = "default"
 frame_progress = 0.788678
 script = ExtResource("2_oj1ra")
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_7hyyj")
 
 [connection signal="animation_finished" from="." to="." method="_animation_finished"]

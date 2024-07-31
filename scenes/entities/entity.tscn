@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfgeeass6n2qf"]
+[gd_scene load_steps=3 format=3 uid="uid://cfgeeass6n2qf"]
 
 [ext_resource type="Script" path="res://scenes/entities/entity.gd" id="1_3kwds"]
+[ext_resource type="AudioStream" uid="uid://bemyfpumtxc1w" path="res://audio/hit.ogg" id="2_5om2k"]
 
 [node name="Entity" type="CharacterBody2D"]
 script = ExtResource("1_3kwds")
@@ -12,3 +13,6 @@ script = ExtResource("1_3kwds")
 [node name="Invincibility" type="Timer" parent="Timers"]
 wait_time = 0.3
 one_shot = true
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_5om2k")

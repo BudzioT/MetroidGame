@@ -40,6 +40,10 @@ func _life_timer_timeout():
 """---------------------------- USER DEFINED FUNCTIONS ----------------------------"""
 func initialize(pos, dir, type):
 	"""Initialize the bullet"""
+	# Load the proper projectile sound and play it
+	$ShootSound.stream = Global.projectile_sounds[type]
+	$ShootSound.play()
+	
 	# Set the position and direction, normalize it to prevent speed increases
 	position = pos
 	direction = dir.normalized()
