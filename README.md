@@ -9,10 +9,12 @@ You dash, shoot and kill the enemies, you must also have some platforming skills
 Play it from the exe file!
 
 ## :camera: Screenshots
-- 
+- ![image](https://github.com/user-attachments/assets/97ed678a-fd87-4185-9f31-a1957bc4c554)
+
 <br>
 
-- 
+- ![image](https://github.com/user-attachments/assets/98b54966-1157-4976-88e2-5316abe262cd)
+
 <br>
 
 ## :video_game: Controls
